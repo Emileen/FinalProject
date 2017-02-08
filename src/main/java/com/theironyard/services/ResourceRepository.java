@@ -10,5 +10,5 @@ import java.util.List;
  * Created by emileenmarianayagam on 2/7/17.
  */
 public interface ResourceRepository extends CrudRepository<Resource, Integer> {
-    List<Resource> findByCateogry ();
+    List<Resource> findByCategory (String category);
 }

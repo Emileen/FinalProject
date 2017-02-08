@@ -26,27 +26,23 @@ public class Agency {
     @Column
     String email;
 
-    @Column (nullable = false)
-    String orgStatement;
 
     public Agency() {
     }
 
-    public Agency(int id, String name, String address, String phonNumber, String email, String orgStatement) {
+    public Agency(int id, String name, String address, String phonNumber, String email) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phonNumber = phonNumber;
         this.email = email;
-        this.orgStatement = orgStatement;
     }
 
-    public Agency(String name, String address, String phonNumber, String email, String orgStatement) {
+    public Agency(String name, String address, String phonNumber, String email) {
         this.name = name;
         this.address = address;
         this.phonNumber = phonNumber;
         this.email = email;
-        this.orgStatement = orgStatement;
     }
 
     public int getId() {
@@ -89,11 +85,4 @@ public class Agency {
         this.email = email;
     }
 
-    public String getOrgStatement() {
-        return orgStatement;
-    }
-
-    public void setOrgStatement(String orgStatement) {
-        this.orgStatement = orgStatement;
-    }
 }

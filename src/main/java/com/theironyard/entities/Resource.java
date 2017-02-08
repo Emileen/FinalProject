@@ -19,14 +19,11 @@ public class Resource {
     @Column (nullable = false, unique = true)
     String address;
 
-    @Column (nullable = false)
+    @Column
     String contactName;
 
-    @Column (nullable = false)
-    String contactNumber;
-
     @Column
-    String webLink;
+    String contactNumber;
 
     @Column (nullable = false)
     String category;
@@ -34,22 +31,20 @@ public class Resource {
     public Resource() {
     }
 
-    public Resource(int id, String name, String address, String contactName, String contactNumber, String webLink, String category) {
+    public Resource(int id, String name, String address, String contactName, String contactNumber, String category) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.contactName = contactName;
         this.contactNumber = contactNumber;
-        this.webLink = webLink;
         this.category = category;
     }
 
-    public Resource(String name, String address, String contactName, String contactNumber, String webLink, String category) {
+    public Resource(String name, String address, String contactName, String contactNumber, String category) {
         this.name = name;
         this.address = address;
         this.contactName = contactName;
         this.contactNumber = contactNumber;
-        this.webLink = webLink;
         this.category = category;
     }
 
@@ -91,14 +86,6 @@ public class Resource {
 
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
-    }
-
-    public String getWebLink() {
-        return webLink;
-    }
-
-    public void setWebLink(String webLink) {
-        this.webLink = webLink;
     }
 
     public String getCategory() {
