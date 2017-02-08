@@ -20,9 +20,6 @@ public class Resource {
     String address;
 
     @Column
-    String contactName;
-
-    @Column
     String contactNumber;
 
     @Column (nullable = false)
@@ -31,19 +28,17 @@ public class Resource {
     public Resource() {
     }
 
-    public Resource(int id, String name, String address, String contactName, String contactNumber, String category) {
+    public Resource(int id, String name, String address, String contactNumber, String category) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.contactName = contactName;
         this.contactNumber = contactNumber;
         this.category = category;
     }
 
-    public Resource(String name, String address, String contactName, String contactNumber, String category) {
+    public Resource(String name, String address, String contactNumber, String category) {
         this.name = name;
         this.address = address;
-        this.contactName = contactName;
         this.contactNumber = contactNumber;
         this.category = category;
     }
@@ -70,14 +65,6 @@ public class Resource {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getContactName() {
-        return contactName;
-    }
-
-    public void setContactName(String contactName) {
-        this.contactName = contactName;
     }
 
     public String getContactNumber() {

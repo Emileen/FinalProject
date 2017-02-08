@@ -21,28 +21,38 @@ public class Agency {
     String address;
 
     @Column
-    String phonNumber;
+    String phoneNumber;
+
+    @Column
+    String contactPerson;
 
     @Column
     String email;
+
+    @Column
+    String website;
 
 
     public Agency() {
     }
 
-    public Agency(int id, String name, String address, String phonNumber, String email) {
+    public Agency(int id, String name, String address, String phoneNumber, String contactPerson, String email, String website) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.phonNumber = phonNumber;
+        this.phoneNumber = phoneNumber;
+        this.contactPerson = contactPerson;
         this.email = email;
+        this.website = website;
     }
 
-    public Agency(String name, String address, String phonNumber, String email) {
+    public Agency(String name, String address, String phoneNumber, String contactPerson, String email, String website) {
         this.name = name;
         this.address = address;
-        this.phonNumber = phonNumber;
+        this.phoneNumber = phoneNumber;
+        this.contactPerson = contactPerson;
         this.email = email;
+        this.website = website;
     }
 
     public int getId() {
@@ -69,12 +79,12 @@ public class Agency {
         this.address = address;
     }
 
-    public String getPhonNumber() {
-        return phonNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonNumber(String phonNumber) {
-        this.phonNumber = phonNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -85,4 +95,19 @@ public class Agency {
         this.email = email;
     }
 
+    public String getContactPerson() {
+        return contactPerson;
+    }
+
+    public void setContactPerson(String contactPerson) {
+        this.contactPerson = contactPerson;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
 }

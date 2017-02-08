@@ -1,6 +1,7 @@
 package com.theironyard.controllers;
 
 import com.theironyard.entities.Agency;
+import com.theironyard.entities.Resource;
 import com.theironyard.services.AgencyRepository;
 import com.theironyard.services.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,6 +29,8 @@ public class RefugeeAdvocyNetworkController2 {
 
    @PostConstruct
     public void init(){
+       List<Agency> agencie = new ArrayList<>();
+       agencie.add(new Agency("south asian", "21 povincial ", "908-786-909", "Kelsey", "newman@afd", "asdfs"));
 
    }
 
@@ -38,11 +42,20 @@ public class RefugeeAdvocyNetworkController2 {
 
     // registers new agencies
     @RequestMapping (path =  "/registration", method = RequestMethod.POST)
-    public Agency registerAgency (String name, String address, String phoneNumber, String email){
-        Agency agency = new Agency(name,address,phoneNumber,email);
+    public Agency registerAgency (String name, String address, String phoneNumber, String contactPerson, String email, String website){
+        Agency agency = new Agency(name,address,phoneNumber, contactPerson, email, website);
         agencies.save(agency);
         return agency;
     }
+
+    @RequestMapping( path = "/resource", method = RequestMethod.GET)
+    public String showResources(){
+
+
+
+        return "/";
+    }
+
 
 
 
