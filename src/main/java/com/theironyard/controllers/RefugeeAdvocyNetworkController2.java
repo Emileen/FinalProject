@@ -49,7 +49,8 @@ public class RefugeeAdvocyNetworkController2 {
            while (fileScanner.hasNext()){
                String line = fileScanner.nextLine();
                String [] columns = line.split(",");
-               Resource oneResource = new Resource( columns[0], columns[1], columns[2],columns[3] )
+               Resource oneResource = new Resource( columns[0], columns[1], columns[2],columns[3] );
+               resources.save(oneResource);
            }
 
        }
