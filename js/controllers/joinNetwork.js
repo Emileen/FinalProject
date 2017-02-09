@@ -4,9 +4,9 @@ module.exports = {
         $scope.regForm = {
            name: null,
            address: null,
-           phone_number: null,
+           phoneNumber: null,
            email: null,
-           contact_person: null,
+           contactPerson: null,
            website: null,   
         };
 

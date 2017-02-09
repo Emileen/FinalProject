@@ -12,6 +12,8 @@ gulp files updated-->
     <!--add js file-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
     <script src="https://npmcdn.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="app.js"></script>
 </head>
 
@@ -20,12 +22,17 @@ gulp files updated-->
     <h1>Refugee Advocacy Network</h1>
     <nav>
         <ul>
-        <li><a ui-sref="join-network">Join the Network</a></li>
+            <li><a ui-sref="join-network">Join the Network</a></li>
+            <li><a ui-sref="view-network">View Network Members</a></li>
         </ul>
     </nav>
 
+    <!--<div id="charlotteMap"></div>-->
+
     <ui-view></ui-view>
-  
+
+
+
 
 </body>
 

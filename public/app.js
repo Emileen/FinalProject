@@ -2,9 +2,10 @@
 const app = angular.module('NetworkApp', ['ui.router']);
 
 let joinNetwork = require('./controllers/joinNetwork');
-
+let viewNetwork = require('./controllers/viewNetwork');
 const controllers = [
     joinNetwork,
+    viewNetwork,
 ];
 
 for (let i = 0; i < controllers.length; i++) {
@@ -19,12 +20,23 @@ app.config(function ($stateProvider) {
         url: '/joinNetwork',
         component: 'joinNetwork',
     });
+
+     $stateProvider.state({
+        name: 'view-network',
+        url: '/viewNetwork',
+        component: 'viewNetwork',
+    });
 });
 
 /* Defining a component */
 app.component('joinNetwork', {
     controller: 'joinNetwork',
     templateUrl: 'templates/joinNetwork.html',
+});
+
+app.component('viewNetwork', {
+    controller: 'viewNetwork',
+    templateUrl: 'templates/viewNetwork.html',
 });
 
 
@@ -55,18 +67,27 @@ app.factory('regFormService', function ($http) {
 
     };
 
-
 })
-},{"./controllers/joinNetwork":2}],2:[function(require,module,exports){
+
+//Leaflet stuff
+// let mymap = L.map('charlotteMap').setView([35.196, -80.792], 13);
+
+// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+//     maxZoom: 18,
+//     id: 'your.mapbox.project.id',
+//     accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
+// }).addTo(mymap);
+},{"./controllers/joinNetwork":2,"./controllers/viewNetwork":3}],2:[function(require,module,exports){
 module.exports = {
     name: 'joinNetwork',
     func: function ($scope, regFormService) {
         $scope.regForm = {
            name: null,
            address: null,
-           phone_number: null,
+           phoneNumber: null,
            email: null,
-           contact_person: null,
+           contactPerson: null,
            website: null,   
         };
 
@@ -76,4 +97,17 @@ module.exports = {
        
     },
 };
+},{}],3:[function(require,module,exports){
+module.exports = {
+    name: 'viewNetwork',
+    func: function ($scope, regFormService) {
+
+        $scope.regForm = regFormService.getAll();
+    }
+};
+
+
+
+
+
 },{}]},{},[1]);
