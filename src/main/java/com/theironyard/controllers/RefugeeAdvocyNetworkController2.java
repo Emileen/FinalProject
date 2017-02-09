@@ -28,8 +28,8 @@ public class RefugeeAdvocyNetworkController2 {
     @Autowired
     ResourceRepository resources;
 
-    @CrossOrigin
-    @PostConstruct
+
+   @PostConstruct
     public void init() throws FileNotFoundException {
        if(agencies.count() == 0){
            File f = new File("agency.csv");
@@ -55,12 +55,14 @@ public class RefugeeAdvocyNetworkController2 {
    }
 
    //diaplay a list of agencies
+   @CrossOrigin
     @RequestMapping (path = "/", method = RequestMethod.GET)
     public List<Agency> showAgencies (){
         return agencies.findAll();
     }
 
     // registers new agencies
+    @CrossOrigin
     @RequestMapping (path =  "/registration", method = RequestMethod.POST)
     public Agency registerAgency (String name, String address, String phoneNumber, String contactPerson, String email, String website){
         Agency agency = new Agency(name,address,phoneNumber, contactPerson, email, website);
@@ -70,6 +72,7 @@ public class RefugeeAdvocyNetworkController2 {
 
     //depending on what category that is selected by the visitor to the website, find all the information and display it
     // on the google map
+    @CrossOrigin
     @RequestMapping( path = "/resource", method = RequestMethod.GET)
     public String showResources(String category){
         List<Resource> resourceList;
