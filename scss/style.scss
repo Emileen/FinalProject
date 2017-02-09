@@ -1,0 +1,46 @@
+/* Include Foundation*/
+@import '../node_modules/foundation-sites/scss/foundation'; //because its in a scss folder
+// @import "foundation/components/buttons";
+// @import "foundation/components/forms";
+
+@include foundation-global-styles;
+@include foundation-grid;
+
+
+
+body {
+    background-color: lightgreen;
+}
+
+h1 {
+    text-align: center;
+}
+form {
+    background-color: white;
+    border: darkgray solid 2px;
+    width: 80%;
+    padding: 40px;
+}
+
+.row {
+    border: darkgrey solid 1px;
+    padding: 10%;
+}
+
+.columns {
+    margin: 10px;
+}
+
+li {
+    list-style-type: none;
+}
+
+input {
+    padding: 2%;
+}
+
+
+button {
+    background-color: lightgreen;
+    padding: 2%;
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<!--Dont forget to run gulp after you set up basic html structure, this
+saves it to the public directory.  Actually you can run gulp watch to keep
+gulp files updated-->
+
+<html>
+
+<head>
+    <title>Refugee Advocacy Network</title>
+    <!--Add css file-->
+    <link rel="stylesheet" href="style.css">
+    <!--add js file-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="https://npmcdn.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="NetworkApp">
+
+    <h1>Refugee Advocacy Network</h1>
+    <nav>
+        <ul>
+        <li><a ui-sref="join-network">Join the Network</a></li>
+        </ul>
+    </nav>
+
+    <ui-view></ui-view>
+  
+
+</body>
+
+</html>
