@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by emileenmarianayagam on 2/8/17.
@@ -28,9 +31,28 @@ public class RefugeeAdvocyNetworkController2 {
     ResourceRepository resources;
 
    @PostConstruct
-    public void init(){
-       List<Agency> agencie = new ArrayList<>();
-       agencie.add(new Agency("south asian", "21 povincial ", "908-786-909", "Kelsey", "newman@afd", "asdfs"));
+    public void init() throws FileNotFoundException {
+       if(agencies.count() == 0){
+           File f = new File("agency.csv");
+           Scanner fileScanner = new Scanner(f);
+           while (fileScanner.hasNext()){
+               String line = fileScanner.nextLine();
+               String [] columns = line.split(",");
+               Agency oneAgency = new Agency(columns[0],columns[1],columns[2],columns[3],columns[4],columns[5]);
+               agencies.save(oneAgency);
+           }
+       }
+
+       if(resources.count() == 0){
+           File f = new File("resource.csv");
+           Scanner fileScanner = new Scanner (f);
+           while (fileScanner.hasNext()){
+               String line = fileScanner.nextLine();
+               String [] columns = line.split(",");
+               Resource oneResource = new Resource( columns[0], columns[1], columns[2],columns[3] )
+           }
+
+       }
 
    }
 
@@ -48,10 +70,19 @@ public class RefugeeAdvocyNetworkController2 {
         return agency;
     }
 
+    //depending on what category that is selected by the visitor to the website, find all the information and display it
+    // on the google map
     @RequestMapping( path = "/resource", method = RequestMethod.GET)
-    public String showResources(){
+    public String showResources(String category){
 
+        List<Resource> resourceList;
 
+        if(category.equals("Health")){
+            resourceList = resources.findByCategory(category);
+        }
+        if (category.equals("School")){
+            resourceList =resources.findByCategory(category);
+        }
 
         return "/";
     }
