@@ -5,6 +5,7 @@ import com.theironyard.entities.Resource;
 import com.theironyard.services.AgencyRepository;
 import com.theironyard.services.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,8 @@ public class RefugeeAdvocyNetworkController2 {
     @Autowired
     ResourceRepository resources;
 
-   @PostConstruct
+    @CrossOrigin
+    @PostConstruct
     public void init() throws FileNotFoundException {
        if(agencies.count() == 0){
            File f = new File("agency.csv");
