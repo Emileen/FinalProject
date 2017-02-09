@@ -32,8 +32,10 @@ public class Agency {
     @Column
     String website;
 
-
     public Agency() {
+    }
+
+    public Agency(String column, String s, String column1, String s1, String column2) {
     }
 
     public Agency(int id, String name, String address, String phoneNumber, String contactPerson, String email, String website) {

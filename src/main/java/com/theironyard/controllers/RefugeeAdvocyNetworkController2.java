@@ -5,15 +5,12 @@ import com.theironyard.entities.Resource;
 import com.theironyard.services.AgencyRepository;
 import com.theironyard.services.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -49,12 +46,10 @@ public class RefugeeAdvocyNetworkController2 {
            while (fileScanner.hasNext()){
                String line = fileScanner.nextLine();
                String [] columns = line.split(",");
-               Resource oneResource = new Resource( columns[0], columns[1], columns[2],columns[3] );
+               Resource oneResource = new Resource( columns[0], columns[1], columns[2],columns[3]);
                resources.save(oneResource);
            }
-
        }
-
    }
 
    //diaplay a list of agencies
@@ -75,7 +70,6 @@ public class RefugeeAdvocyNetworkController2 {
     // on the google map
     @RequestMapping( path = "/resource", method = RequestMethod.GET)
     public String showResources(String category){
-
         List<Resource> resourceList;
 
         if(category.equals("Health")){
@@ -84,7 +78,6 @@ public class RefugeeAdvocyNetworkController2 {
         if (category.equals("School")){
             resourceList =resources.findByCategory(category);
         }
-
         return "/";
     }
 
