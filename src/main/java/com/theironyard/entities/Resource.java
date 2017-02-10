@@ -13,10 +13,10 @@ public class Resource {
     @GeneratedValue
     int id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     String name;
 
-    @Column (nullable = false, unique = true)
+    @Column (nullable = false)
     String address;
 
     @Column

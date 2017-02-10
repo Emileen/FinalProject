@@ -86,6 +86,14 @@ public class RefugeeAdvocyNetworkController2 {
         return "/";
     }
 
+    public static void location(String address){
+        float latitude;
+        float longitude;
+
+
+
+    }
+
 
 
 

@@ -14,10 +14,10 @@ public class Agency {
     @GeneratedValue
     int id;
 
-    @Column (nullable = false)
+    @Column
     String name;
 
-    @Column (nullable = false)
+    @Column
     String address;
 
     @Column
@@ -31,6 +31,8 @@ public class Agency {
 
     @Column
     String website;
+
+
 
     public Agency() {
     }
