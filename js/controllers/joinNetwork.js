@@ -1,17 +1,17 @@
 module.exports = {
     name: 'joinNetwork',
     func: function ($scope, regFormService) {
-        $scope.regForm = {
+        $scope.registration = {
            name: null,
            address: null,
            phoneNumber: null,
-           email: null,
            contactPerson: null,
+           email: null,
            website: null,   
         };
 
         $scope.submitRegistration = function() {
-            regFormService.add($scope.regForm)
+            regFormService.add($scope.registration)
         }
        
     },

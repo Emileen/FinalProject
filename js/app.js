@@ -45,20 +45,21 @@ app.factory('regFormService', function ($http) {
 
     return {
         
-        add(regForm) {
+        add(registration) {
             $http.post('https://stormy-badlands-83991.herokuapp.com/registration', {
-                name: regForm.name,
-                address: regForm.address,
-                phone: regForm.phone_number,
-                email: regForm.email,
-                contact_person: regForm.contact_person,
-                website: regForm.website,
+                name: registration.name,
+                address: registration.address,
+                phoneNumber: registration.phoneNumber,
+                email: registration.email,
+                contactPerson: registration.contactPerson,
+                website: registration.website,
             });
+            console.log(registration);
         },
 
         getAll() {
             $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
-                angular.copy(response.data.registration, forms);
+                angular.copy(response.data, forms);
             });
             
             return forms;
