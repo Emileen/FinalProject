@@ -5,10 +5,8 @@ import com.theironyard.entities.Resource;
 import com.theironyard.services.AgencyRepository;
 import com.theironyard.services.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -64,10 +62,8 @@ public class RefugeeAdvocyNetworkController2 {
     // registers new agencies
     @CrossOrigin
     @RequestMapping (path =  "/registration", method = RequestMethod.POST)
-    public Agency registerAgency (String name, String address, String phoneNumber, String contactPerson, String email, String website){
-        Agency agency = new Agency(name,address,phoneNumber, contactPerson, email, website);
-        agencies.save(agency);
-        return agency;
+    public Agency registerAgency (@RequestBody Agency postData){ //standard submisson will work the other way
+        return agencies.save(postData);// give me the request body and turn it into a agency body
     }
 
     //depending on what category that is selected by the visitor to the website, find all the information and display it
