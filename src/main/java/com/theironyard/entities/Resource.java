@@ -25,6 +25,14 @@ public class Resource {
     @Column (nullable = false)
     String category;
 
+    @Column
+    float latitude;
+
+    @Column
+    float longitude;
+
+
+
     public Resource() {
     }
 
@@ -81,5 +89,21 @@ public class Resource {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
     }
 }

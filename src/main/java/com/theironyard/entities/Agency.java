@@ -32,6 +32,12 @@ public class Agency {
     @Column
     String website;
 
+    @Column
+    float latitude;
+
+    @Column
+    float longitude;
+
 
 
     public Agency() {
@@ -113,5 +119,21 @@ public class Agency {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
     }
 }

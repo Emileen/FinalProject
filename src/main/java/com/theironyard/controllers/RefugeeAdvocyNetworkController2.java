@@ -1,17 +1,25 @@
 package com.theironyard.controllers;
 
+import com.theironyard.data.Location;
 import com.theironyard.entities.Agency;
 import com.theironyard.entities.Resource;
 import com.theironyard.services.AgencyRepository;
 import com.theironyard.services.ResourceRepository;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
+
+// key =AIzaSyB8kcA6y95s-t18etG55CGT4v8CyD5p8kM
+
+//https://www.googleapis.com/geolocation/v1/geolocate?key=YOUR_API_KEY
+//https://maps.googleapis.com/maps/api/geocode/json?address=Winnetka&key=AIzaSyB8kcA6y95s-t18etG55CGT4v8CyD5p8kM
 
 /**
  * Created by emileenmarianayagam on 2/8/17.
@@ -26,6 +34,9 @@ public class RefugeeAdvocyNetworkController2 {
     @Autowired
     ResourceRepository resources;
 
+    @Autowired
+    RestTemplate template;
+
 
    @PostConstruct
     public void init() throws FileNotFoundException {
@@ -36,6 +47,9 @@ public class RefugeeAdvocyNetworkController2 {
                String line = fileScanner.nextLine();
                String [] columns = line.split(",");
                Agency oneAgency = new Agency(columns[0],columns[1],columns[2],columns[3],columns[4],columns[5]);
+
+               // find lat/long
+
                agencies.save(oneAgency);
            }
        }
@@ -47,6 +61,8 @@ public class RefugeeAdvocyNetworkController2 {
                String line = fileScanner.nextLine();
                String [] columns = line.split(",");
                Resource oneResource = new Resource( columns[0], columns[1], columns[2],columns[3]);
+
+               // find lat/long
                resources.save(oneResource);
            }
        }
@@ -58,6 +74,8 @@ public class RefugeeAdvocyNetworkController2 {
     public List<Agency> showAgencies (){
         return agencies.findAll();
     }
+
+
 
     // registers new agencies
     @CrossOrigin
@@ -82,16 +100,33 @@ public class RefugeeAdvocyNetworkController2 {
         return "/";
     }
 
-    public static void location(String address){
-        float latitude;
-        float longitude;
+//    @CrossOrigin
+//    @RequestMapping ( path = "/resources/{id}", method = RequestMethod.GET)
+//    public Location getResourceById(@PathVariable("id") int id) {
+    @CrossOrigin
+    @RequestMapping ( path = "/resources/", method = RequestMethod.GET)
+    public Location getresource() {
+        Map<String, String> urlParms = new HashMap<>();
+        urlParms.put("accessKey", System.getenv("GOOGLE_API_KEY"));
+        Location thislocation = template.getForObject("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway+Mountain+View+CA&key={accessKey}", Location.class, urlParms);
+        System.out.println(thislocation.toString());
 
 
-
+    return thislocation;
     }
 
+    @CrossOrigin
+    @RequestMapping ( path = "/agencies/{id}", method = RequestMethod.GET)
+    public Location getAgencyById(@PathVariable("id") int id) {
 
 
+        Map<String, String> urlParms = new HashMap<>();
+        urlParms.put("accessKey", System.getenv("GOOGLE_API_KEY"));
 
+        return template.getForObject("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway+Mountain+View+CA&key={accessKey}", Location.class, urlParms);
+    }
 
+    // pass in the address and get from the geolocation latitude and longitude
+    //public void location(String address){
 }
+
