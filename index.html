@@ -6,33 +6,40 @@ gulp files updated-->
 <html>
 
 <head>
+    <meta charset=utf-8 />
     <title>Refugee Advocacy Network</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <!--Add css file-->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--add js file-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
     <script src="https://npmcdn.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="app.js"></script>
+    
 </head>
 
 <body ng-app="NetworkApp">
 
     <h1>Refugee Advocacy Network</h1>
+    
+    <div id="mapid"></div>
+
     <nav>
         <ul>
             <li><a ui-sref="join-network">Join the Network</a></li>
             <li><a ui-sref="view-network">View Network Members</a></li>
+            <!--<li><a ui-sref="charlotte-map">Charlotte Resource Map</a></li>-->
         </ul>
     </nav>
 
-    <!--<div id="charlotteMap"></div>-->
+
+
+
 
     <ui-view></ui-view>
-
-
-
 
 </body>
 

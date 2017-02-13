@@ -1,10 +1,12 @@
-const app = angular.module('NetworkApp', ['ui.router']);
+const app = angular.module('NetworkApp', ['ui.router'], ['leaflet-directive']);
 
 let joinNetwork = require('./controllers/joinNetwork');
 let viewNetwork = require('./controllers/viewNetwork');
+// let charlotteMap = require('./controllers/charlotteMap');
 const controllers = [
     joinNetwork,
     viewNetwork,
+    // charlotteMap,
 ];
 
 for (let i = 0; i < controllers.length; i++) {
@@ -25,7 +27,19 @@ app.config(function ($stateProvider) {
         url: '/viewNetwork',
         component: 'viewNetwork',
     });
+
+//     $stateProvider.state({
+//         name: 'charlotte-map',
+//         url: '/charlotteMap',
+//         component: 'charlotteMap',
+//     })
 });
+
+//map controller
+
+app.controller("MapController", [ "$scope", function($scope) {
+            // Nothing here!
+        }]);
 
 /* Defining a component */
 app.component('joinNetwork', {
@@ -37,6 +51,11 @@ app.component('viewNetwork', {
     controller: 'viewNetwork',
     templateUrl: 'templates/viewNetwork.html',
 });
+
+// app.component('charlotteMap', {
+//     controller: 'charlotteMap',
+//     templateUrl: 'templates/charlotteMap.html',
+// });
 
 
 /* Services */
@@ -69,12 +88,16 @@ app.factory('regFormService', function ($http) {
 
 })
 
-//Leaflet stuff
-// let mymap = L.map('charlotteMap').setView([35.196, -80.792], 13);
+//leaflet stuff
 
-// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//     maxZoom: 18,
-//     id: 'your.mapbox.project.id',
-//     accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
-// }).addTo(mymap);
+ var mymap = L.map('mapid').setView([35.226944, -80.843333], 13);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/lclark070607/ciz2xr2gg002r2rqb9g2r41ut/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
+        }).addTo(mymap);
+
+
+
