@@ -1,12 +1,12 @@
-const app = angular.module('NetworkApp', ['ui.router'], ['leaflet-directive']);
+const app = angular.module('NetworkApp', ['ui.router']);
 
 let joinNetwork = require('./controllers/joinNetwork');
 let viewNetwork = require('./controllers/viewNetwork');
-// let charlotteMap = require('./controllers/charlotteMap');
+let charlotteMap = require('./controllers/charlotteMap');
 const controllers = [
     joinNetwork,
     viewNetwork,
-    // charlotteMap,
+    charlotteMap,
 ];
 
 for (let i = 0; i < controllers.length; i++) {
@@ -22,24 +22,19 @@ app.config(function ($stateProvider) {
         component: 'joinNetwork',
     });
 
-     $stateProvider.state({
+    $stateProvider.state({
         name: 'view-network',
         url: '/viewNetwork',
         component: 'viewNetwork',
     });
 
-//     $stateProvider.state({
-//         name: 'charlotte-map',
-//         url: '/charlotteMap',
-//         component: 'charlotteMap',
-//     })
+    $stateProvider.state({
+        name: 'charlotte-map',
+        url: '/charlotteMap',
+        component: 'charlotteMap',
+    })
 });
 
-//map controller
-
-app.controller("MapController", [ "$scope", function($scope) {
-            // Nothing here!
-        }]);
 
 /* Defining a component */
 app.component('joinNetwork', {
@@ -52,10 +47,10 @@ app.component('viewNetwork', {
     templateUrl: 'templates/viewNetwork.html',
 });
 
-// app.component('charlotteMap', {
-//     controller: 'charlotteMap',
-//     templateUrl: 'templates/charlotteMap.html',
-// });
+app.component('charlotteMap', {
+    controller: 'charlotteMap',
+    templateUrl: 'templates/charlotteMap.html',
+});
 
 
 /* Services */
@@ -63,7 +58,7 @@ app.factory('regFormService', function ($http) {
     let forms = [];
 
     return {
-        
+
         add(registration) {
             $http.post('https://stormy-badlands-83991.herokuapp.com/registration', {
                 name: registration.name,
@@ -80,7 +75,7 @@ app.factory('regFormService', function ($http) {
             $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
                 angular.copy(response.data, forms);
             });
-            
+
             return forms;
         },
 
@@ -88,16 +83,41 @@ app.factory('regFormService', function ($http) {
 
 })
 
+app.factory('charlotteMapService', function ($scope, $http) {
+    let agencies = [];
+    let healthClinics = [];
+
+    return {
+        getAgencies() {
+            $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
+                angular.copy(response.data, agencies);
+            });
+
+            return agencies;
+        },
+       
+        getHealthClinics() {
+            $http.get('https://stormy-badlands-83991.herokuapp.com/health/').then(function (response) {
+                angular.copy(response.data, healthClinics);
+            });
+            
+            return healthClinics;
+        }
+    }
+});
+
 //leaflet stuff
+// window.addEventListener('load', function () {
+//  var mymap = L.map('mapid').setView([35.226944, -80.843333], 13);
 
- var mymap = L.map('mapid').setView([35.226944, -80.843333], 13);
+//         L.tileLayer('https://api.mapbox.com/styles/v1/lclark070607/ciz2xr2gg002r2rqb9g2r41ut/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag', {
+//             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+//             maxZoom: 18,
+//             id: 'mapbox.streets',
+//             accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
+//         }).addTo(mymap);
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/lclark070607/ciz2xr2gg002r2rqb9g2r41ut/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag', {
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox.streets',
-            accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
-        }).addTo(mymap);
+// })
 
 
 
