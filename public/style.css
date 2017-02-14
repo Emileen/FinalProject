@@ -1282,6 +1282,28 @@ button {
   background-color: lightgreen;
   padding: 2%; }
 
+#mapBox {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: blue;
+  padding: 10px; }
+  #mapBox::before, #mapBox::after {
+    display: table;
+    content: ' '; }
+  #mapBox::after {
+    clear: both; }
+
 #mapid {
-  height: 850px;
+  width: 83.33333%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  height: 650px;
   font-family: 'Open Sans', sans-serif; }
+  @media print, screen and (min-width: 40em) {
+    #mapid {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+  #mapid:last-child:not(:first-child) {
+    float: right; }
