@@ -5,7 +5,6 @@ import com.theironyard.entities.Agency;
 import com.theironyard.entities.Resource;
 import com.theironyard.services.AgencyRepository;
 import com.theironyard.services.ResourceRepository;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -13,7 +12,10 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 
 // key =AIzaSyB8kcA6y95s-t18etG55CGT4v8CyD5p8kM
@@ -69,7 +71,7 @@ public class RefugeeAdvocyNetworkController2 {
    }
 
    //diaplay a list of agencies
-   @CrossOrigin
+    @CrossOrigin
     @RequestMapping (path = "/", method = RequestMethod.GET)
     public List<Agency> showAgencies (){
         return agencies.findAll();
@@ -104,15 +106,15 @@ public class RefugeeAdvocyNetworkController2 {
 //    @RequestMapping ( path = "/resources/{id}", method = RequestMethod.GET)
 //    public Location getResourceById(@PathVariable("id") int id) {
     @CrossOrigin
-    @RequestMapping ( path = "/resources/", method = RequestMethod.GET)
-    public Location getresource() {
+    @RequestMapping ( path = "/resources/{id}", method = RequestMethod.GET)
+    public Location getresource(@PathVariable("id") int id) {
         Map<String, String> urlParms = new HashMap<>();
         urlParms.put("accessKey", System.getenv("GOOGLE_API_KEY"));
-        Location thislocation = template.getForObject("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway+Mountain+View+CA&key={accessKey}", Location.class, urlParms);
+        urlParms.put("address", resources.findOne(id).getAddress());
+        Location thislocation = template.getForObject("https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={accessKey}", Location.class, urlParms);
         System.out.println(thislocation.toString());
 
-
-    return thislocation;
+        return thislocation;
     }
 
     @CrossOrigin
