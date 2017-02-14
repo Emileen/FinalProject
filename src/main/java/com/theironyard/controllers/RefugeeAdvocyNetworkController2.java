@@ -80,6 +80,7 @@ public class RefugeeAdvocyNetworkController2 {
     @CrossOrigin
     @RequestMapping (path =  "/registration", method = RequestMethod.POST)
     public Agency registerAgency (@RequestBody Agency postData){ //standard submisson will work the other way
+        postData.setLatLongValues();
         return agencies.save(postData);// give me the request body and turn it into a agency body
     }
 

@@ -1,5 +1,6 @@
 package com.theironyard.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.theironyard.data.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,6 +65,18 @@ public class Agency {
         setLatLongValues();
     }
 
+    public Agency(String name, String address, String phoneNumber, String contactPerson, String email, String website, double latitude, double longitude) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.contactPerson = contactPerson;
+        this.email = email;
+        this.website = website;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        setLatLongValues();
+    }
+
     public Agency(String name, String address, String phoneNumber, String contactPerson, String email, String website) {
         this.name = name;
         this.address = address;
@@ -99,14 +112,17 @@ public class Agency {
         setLatLongValues();
     }
 
-    private void setLatLongValues() {
+    @JsonIgnore
+    public void setLatLongValues() {
         Map<String, String> urlParms = new HashMap<>();
         urlParms.put("accessKey", System.getenv("GOOGLE_API_KEY"));
         urlParms.put("address", getAddress());
         Location thislocation = new RestTemplate().getForObject("https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={accessKey}", Location.class, urlParms);
 
-        this.latitude = thislocation.getResults().get(0).getGeometry().getLocation().getLat();
-        this.longitude= thislocation.getResults().get(0).getGeometry().getLocation().getLng();
+        if (thislocation.getResults().size() >= 1) {
+            this.latitude = thislocation.getResults().get(0).getGeometry().getLocation().getLat();
+            this.longitude = thislocation.getResults().get(0).getGeometry().getLocation().getLng();
+        }
     }
 
     public String getPhoneNumber() {
