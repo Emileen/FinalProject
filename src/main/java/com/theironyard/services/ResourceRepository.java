@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface ResourceRepository extends CrudRepository<Resource, Integer> {
     List<Resource> findByCategory (String category);
+    //Resource findById (int id);
 }

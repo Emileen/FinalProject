@@ -5,7 +5,6 @@ import com.theironyard.entities.Agency;
 import com.theironyard.entities.Resource;
 import com.theironyard.services.AgencyRepository;
 import com.theironyard.services.ResourceRepository;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -87,46 +86,20 @@ public class RefugeeAdvocyNetworkController2 {
     //depending on what category that is selected by the visitor to the website, find all the information and display it
     // on the google map
     @CrossOrigin
-    @RequestMapping( path = "/resource", method = RequestMethod.GET)
-    public String showResources(String category){
-        List<Resource> resourceList;
+    @RequestMapping( path = "/resource/{category}", method = RequestMethod.GET)
+    public List<Resource> showResources(@PathVariable("category") String category){
+        List<Resource> resourceList = (List)resources.findAll();
 
-        if(category.equals("Health")){
+        if(category.equalsIgnoreCase("Health")){
             resourceList = resources.findByCategory(category);
         }
         if (category.equals("School")){
             resourceList =resources.findByCategory(category);
         }
-        return "/";
+        return resourceList;
     }
 
-//    @CrossOrigin
-//    @RequestMapping ( path = "/resources/{id}", method = RequestMethod.GET)
-//    public Location getResourceById(@PathVariable("id") int id) {
-    @CrossOrigin
-    @RequestMapping ( path = "/resources/", method = RequestMethod.GET)
-    public Location getresource() {
-        Map<String, String> urlParms = new HashMap<>();
-        urlParms.put("accessKey", System.getenv("GOOGLE_API_KEY"));
-        Location thislocation = template.getForObject("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway+Mountain+View+CA&key={accessKey}", Location.class, urlParms);
-        System.out.println(thislocation.toString());
 
 
-    return thislocation;
-    }
-
-    @CrossOrigin
-    @RequestMapping ( path = "/agencies/{id}", method = RequestMethod.GET)
-    public Location getAgencyById(@PathVariable("id") int id) {
-
-
-        Map<String, String> urlParms = new HashMap<>();
-        urlParms.put("accessKey", System.getenv("GOOGLE_API_KEY"));
-
-        return template.getForObject("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway+Mountain+View+CA&key={accessKey}", Location.class, urlParms);
-    }
-
-    // pass in the address and get from the geolocation latitude and longitude
-    //public void location(String address){
 }
 

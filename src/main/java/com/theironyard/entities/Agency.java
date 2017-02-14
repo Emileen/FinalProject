@@ -1,6 +1,13 @@
 package com.theironyard.entities;
 
+import com.theironyard.data.Location;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.client.RestTemplate;
+
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by emileenmarianayagam on 2/7/17.
@@ -33,10 +40,10 @@ public class Agency {
     String website;
 
     @Column
-    float latitude;
+    double latitude;
 
     @Column
-    float longitude;
+    double longitude;
 
 
 
@@ -54,6 +61,7 @@ public class Agency {
         this.contactPerson = contactPerson;
         this.email = email;
         this.website = website;
+        setLatLongValues();
     }
 
     public Agency(String name, String address, String phoneNumber, String contactPerson, String email, String website) {
@@ -63,6 +71,7 @@ public class Agency {
         this.contactPerson = contactPerson;
         this.email = email;
         this.website = website;
+        setLatLongValues();
     }
 
     public int getId() {
@@ -87,6 +96,17 @@ public class Agency {
 
     public void setAddress(String address) {
         this.address = address;
+        setLatLongValues();
+    }
+
+    private void setLatLongValues() {
+        Map<String, String> urlParms = new HashMap<>();
+        urlParms.put("accessKey", System.getenv("GOOGLE_API_KEY"));
+        urlParms.put("address", getAddress());
+        Location thislocation = new RestTemplate().getForObject("https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={accessKey}", Location.class, urlParms);
+
+        this.latitude = thislocation.getResults().get(0).getGeometry().getLocation().getLat();
+        this.longitude= thislocation.getResults().get(0).getGeometry().getLocation().getLng();
     }
 
     public String getPhoneNumber() {
@@ -121,19 +141,19 @@ public class Agency {
         this.website = website;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 }

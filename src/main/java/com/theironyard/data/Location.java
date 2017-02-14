@@ -13,6 +13,7 @@ public class Location {
     //has a list of category
     public List<Result> results;
 
+
     public Location() {
     }
 

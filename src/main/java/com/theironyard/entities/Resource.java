@@ -1,6 +1,11 @@
 package com.theironyard.entities;
 
+import com.theironyard.data.Location;
+import org.springframework.web.client.RestTemplate;
+
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by emileenmarianayagam on 2/7/17.
@@ -26,10 +31,10 @@ public class Resource {
     String category;
 
     @Column
-    float latitude;
+    double latitude;
 
     @Column
-    float longitude;
+    double longitude;
 
 
 
@@ -73,6 +78,17 @@ public class Resource {
 
     public void setAddress(String address) {
         this.address = address;
+        setLatLongValues();
+    }
+
+    private void setLatLongValues() {
+        Map<String, String> urlParms = new HashMap<>();
+        urlParms.put("accessKey", System.getenv("GOOGLE_API_KEY"));
+        urlParms.put("address", getAddress());
+        Location thislocation = new RestTemplate().getForObject("https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={accessKey}", Location.class, urlParms);
+
+        this.latitude = thislocation.getResults().get(0).getGeometry().getLocation().getLat();
+        this.longitude= thislocation.getResults().get(0).getGeometry().getLocation().getLng();
     }
 
     public String getContactNumber() {
@@ -91,7 +107,7 @@ public class Resource {
         this.category = category;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
@@ -99,7 +115,7 @@ public class Resource {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 

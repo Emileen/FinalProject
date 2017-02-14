@@ -9,14 +9,6 @@ import java.util.List;
  */
 
 
-/*address_components: [],
-        formatted_address: "Winnetka, IL, USA",
-        geometry: {},
-        place_id: "ChIJW8Va5TnED4gRY91Ng47qy3Q",
-        types: []
-        }
-        ],*/
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Result {
 
