@@ -11,6 +11,8 @@ module.exports = {
             accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
         }).addTo(mymap);
 
+
+
         // charlotteMapService.getAgencies().then(function (agencies) {
         //     console.log('got the agencies');
 
@@ -28,22 +30,51 @@ module.exports = {
 
         // });
 
-        charlotteMapService.getHealthClinics().then(function (healthClinics) {
-            console.log('got the clinics');
-            console.log(healthClinics);
+        // charlotteMapService.getHealthClinics().then(function (healthClinics) {
 
-            let healthIcon = L.icon({
+        //     let healthIcon = L.icon({
+        //         iconUrl: 'img/defibrillator-15.svg',
+        //         iconSize: [24, 24],
+        //         iconAnchor: [12, 22],
+        //         popupAnchor: [0, -24],
+        //     });
+
+        //     for (let i = 0; i < healthClinics.length; i++) {
+        //         L.marker([healthClinics[i].latitude, healthClinics[i].longitude], { icon: healthIcon }).addTo(mymap);
+        //     }
+
+        // });
+
+           charlotteMapService.getSchools().then(function (schools) {
+
+            let schoolIcon = L.icon({
                 iconUrl: 'img/building-15.svg',
                 iconSize: [24, 24],
                 iconAnchor: [12, 22],
                 popupAnchor: [0, -24],
             });
 
-            for (let i = 0; i < healthClinics.length; i++) {
-                L.marker([healthClinics[i].latitude, healthClinics[i].longitude], { icon: healthIcon }).addTo(mymap);
+            for (let i = 0; i < schools.length; i++) {
+                L.marker([schools[i].latitude, schools[i].longitude], { icon: schoolIcon }).addTo(mymap);
             }
 
         });
+
+        // charlotteMapService.getLibraries().then(function (libraries) {
+
+        //     let librariesIcon = L.icon({
+        //         iconUrl: 'img/defibrillator-15.svg',
+        //         iconSize: [24, 24],
+        //         iconAnchor: [12, 22],
+        //         popupAnchor: [0, -24],
+        //     });
+
+        //     for (let i = 0; i < libraries.length; i++) {
+        //         // L.marker([libraries[i].latitude, libraries[i].longitude], { icon: librariesIcon }).addTo(mymap);
+        //         L.marker(libraries.coordinates[i], { icon: librariesIcon }).addTo(mymap);
+        //     }
+
+        // });
     }
 
 }
@@ -60,7 +91,6 @@ module.exports = {
 // agencies[i].bindPopup(popup);
 //         });
 
-    //     $scope.healthClinics = charlotteMapService.getHealthClinics();
 
 
 

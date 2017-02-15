@@ -86,6 +86,8 @@ app.factory('regFormService', function ($http) {
 app.factory('charlotteMapService', function ($http) {
     let agencies = [];
     let healthClinics = [];
+    let schools = [];
+    let libraries = [];
 
     return {
         getAgencies() {
@@ -103,6 +105,21 @@ app.factory('charlotteMapService', function ($http) {
                 return response.data;
             });
             
+        },
+
+        getSchools() {
+            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/schools/').then(function (response) {
+                // angular.copy(response.data, healthClinics);
+                return response.data;
+            });
+            
+        },
+
+
+        getLibraries() {
+            return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/libraries.geojson').then(function (response) {
+                return response.data;
+            });
         }
     }
 });
