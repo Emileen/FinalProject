@@ -1,6 +1,5 @@
 package com.theironyard.controllers;
 
-import com.theironyard.data.Location;
 import com.theironyard.entities.Agency;
 import com.theironyard.entities.Resource;
 import com.theironyard.services.AgencyRepository;
@@ -69,11 +68,18 @@ public class RefugeeAdvocyNetworkController2 {
 
    //diaplay a list of agencies
    @CrossOrigin
-    @RequestMapping (path = "/", method = RequestMethod.GET)
+   @RequestMapping (path = "/", method = RequestMethod.GET)
     public List<Agency> showAgencies (){
         return agencies.findAll();
     }
 
+
+    @CrossOrigin
+    @RequestMapping (path = "/resources", method = RequestMethod.GET)
+    public List<Resource> showResource (){
+        return resources.findAll();
+
+    }
 
 
     // registers new agencies
@@ -89,13 +95,17 @@ public class RefugeeAdvocyNetworkController2 {
     @CrossOrigin
     @RequestMapping( path = "/resource/{category}", method = RequestMethod.GET)
     public List<Resource> showResources(@PathVariable("category") String category){
-        List<Resource> resourceList = (List)resources.findAll();
+       // List<Resource> resourceList = (List)resources.findAll();
 
-        if(category.equalsIgnoreCase("Health")){
-            resourceList = resources.findByCategory(category);
+        List<Resource> resourceList;
+
+        if(category.equalsIgnoreCase("health")){
+            resourceList = resources.findByCategoryIgnoreCase(category);
         }
-        if (category.equals("School")){
-            resourceList =resources.findByCategory(category);
+        else if (category.equalsIgnoreCase("school")){
+            resourceList =resources.findByCategoryIgnoreCase(category);
+        }else {
+            resourceList = (List)resources.findAll();
         }
         return resourceList;
     }

@@ -10,6 +10,7 @@ import java.util.List;
  * Created by emileenmarianayagam on 2/7/17.
  */
 public interface ResourceRepository extends CrudRepository<Resource, Integer> {
-    List<Resource> findByCategory (String category);
+    List<Resource> findByCategoryIgnoreCase(String category);
+    List<Resource> findAll();
     //Resource findById (int id);
 }
