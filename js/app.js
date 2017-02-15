@@ -83,25 +83,26 @@ app.factory('regFormService', function ($http) {
 
 })
 
-app.factory('charlotteMapService', function ($scope, $http) {
+app.factory('charlotteMapService', function ($http) {
     let agencies = [];
     let healthClinics = [];
 
     return {
         getAgencies() {
-            $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
-                angular.copy(response.data, agencies);
+            return $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
+                // angular.copy(response.data, agencies);
+                return response.data;
             });
 
-            return agencies;
+            // return agencies;
         },
        
         getHealthClinics() {
-            $http.get('https://stormy-badlands-83991.herokuapp.com/health/').then(function (response) {
-                angular.copy(response.data, healthClinics);
+            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/health/').then(function (response) {
+                // angular.copy(response.data, healthClinics);
+                return response.data;
             });
             
-            return healthClinics;
         }
     }
 });

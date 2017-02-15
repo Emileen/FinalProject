@@ -45,9 +45,18 @@ button {
     padding: 2%;
 }
 
+#mapBox {
+    @include grid-row();
+    background-color: blue;
+    padding: 10px;
+}
+
+
+
+
 #mapid {
-    height: 850px;
-   
+    @include grid-column(8);
+    height: 650px;
     font-family: 'Open Sans', sans-serif;
 }
 
