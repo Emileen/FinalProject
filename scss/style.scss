@@ -55,7 +55,7 @@ button {
 
 
 #mapid {
-    @include grid-column(10);
+    @include grid-column(8);
     height: 650px;
     font-family: 'Open Sans', sans-serif;
 }

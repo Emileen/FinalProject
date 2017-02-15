@@ -98,11 +98,11 @@ app.factory('charlotteMapService', function ($http) {
         },
        
         getHealthClinics() {
-            $http.get('https://stormy-badlands-83991.herokuapp.com/resource/health/').then(function (response) {
-                angular.copy(response.data, healthClinics);
+            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/health/').then(function (response) {
+                // angular.copy(response.data, healthClinics);
+                return response.data;
             });
             
-            return healthClinics;
         }
     }
 });

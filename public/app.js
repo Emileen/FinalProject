@@ -99,11 +99,11 @@ app.factory('charlotteMapService', function ($http) {
         },
        
         getHealthClinics() {
-            $http.get('https://stormy-badlands-83991.herokuapp.com/resource/health/').then(function (response) {
-                angular.copy(response.data, healthClinics);
+            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/health/').then(function (response) {
+                // angular.copy(response.data, healthClinics);
+                return response.data;
             });
             
-            return healthClinics;
         }
     }
 });
@@ -138,24 +138,42 @@ module.exports = {
             accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
         }).addTo(mymap);
 
-        charlotteMapService.getAgencies().then(function (agencies) {
-            console.log('got the agencies');
+        // charlotteMapService.getAgencies().then(function (agencies) {
+        //     console.log('got the agencies');
 
-            let buildingIcon = L.icon({
+        //     let buildingIcon = L.icon({
+        //         iconUrl: 'img/building-15.svg',
+        //         iconSize: [24, 24],
+        //         iconAnchor: [12, 22],
+        //         popupAnchor: [0, -24],
+        //     });
+
+
+        //     for (let i = 0; i < agencies.length; i++) {
+        //         L.marker([agencies[i].latitude, agencies[i].longitude], { icon: buildingIcon }).addTo(mymap);
+        //     }
+
+        // });
+
+        charlotteMapService.getHealthClinics().then(function (healthClinics) {
+            console.log('got the clinics');
+            console.log(healthClinics);
+
+            let healthIcon = L.icon({
                 iconUrl: 'img/building-15.svg',
                 iconSize: [24, 24],
                 iconAnchor: [12, 22],
                 popupAnchor: [0, -24],
             });
 
-            for (let i = 0; i < agencies.length; i++) {
-                L.marker([agencies[i].latitude, agencies[i].longitude], { icon: buildingIcon }).addTo(mymap);
+            for (let i = 0; i < healthClinics.length; i++) {
+                L.marker([healthClinics[i].latitude, healthClinics[i].longitude], { icon: healthIcon }).addTo(mymap);
             }
+
         });
     }
+
 }
-
-
 
 
 
