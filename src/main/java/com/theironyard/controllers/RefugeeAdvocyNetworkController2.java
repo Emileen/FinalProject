@@ -102,9 +102,12 @@ public class RefugeeAdvocyNetworkController2 {
         if(category.equalsIgnoreCase("health")){
             resourceList = resources.findByCategoryIgnoreCase(category);
         }
-        else if (category.equalsIgnoreCase("school")){
+        else if (category.equalsIgnoreCase("LanguageImmersion")){
             resourceList =resources.findByCategoryIgnoreCase(category);
-        }else {
+        }else if (category.equalsIgnoreCase("CommunitiesInSchools")){
+            resourceList = resources.findByCategoryIgnoreCase(category);
+        }
+        else {
             resourceList = (List)resources.findAll();
         }
         return resourceList;

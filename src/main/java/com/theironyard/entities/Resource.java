@@ -65,6 +65,7 @@ public class Resource {
         this.category = category;
         this.latitude = latitude;
         this.longitude = longitude;
+        setLatLongValues();
     }
 
     public int getId() {
