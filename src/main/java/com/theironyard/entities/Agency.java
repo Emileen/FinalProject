@@ -46,6 +46,8 @@ public class Agency {
     @Column
     double longitude;
 
+    @OneToOne // there is a one to one relationship between user and agency
+    User user;
 
 
     public Agency() {
