@@ -12,5 +12,6 @@ import java.util.List;
 public interface ResourceRepository extends CrudRepository<Resource, Integer> {
     List<Resource> findByCategoryIgnoreCase(String category);
     List<Resource> findAll();
+    Resource findByName (String name);
     //Resource findById (int id);
 }

@@ -2,17 +2,13 @@ package com.theironyard.controllers;
 
 import com.theironyard.entities.Agency;
 import com.theironyard.entities.Resource;
-import com.theironyard.entities.User;
 import com.theironyard.services.AgencyRepository;
-import com.theironyard.services.PasswordStorage;
 import com.theironyard.services.ResourceRepository;
-import com.theironyard.services.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -22,7 +18,7 @@ import java.util.*;
  * Created by emileenmarianayagam on 2/8/17.
  */
 
-@RestController
+@RestController // how you return json
 public class RefugeeAdvocacyNetworkController2 {
 
     @Autowired
@@ -107,14 +103,22 @@ public class RefugeeAdvocacyNetworkController2 {
         return resourceList;
     }
 
-    //get the name of the agency from the front end
+    //get the name of the agency/ resource from the front end
     //go into the database and pull out that one agency out and return that to the front end for display
     @CrossOrigin
     @RequestMapping ( path = "/result/{name}",  method = RequestMethod.GET)
-    public Agency agency (@PathVariable ("name") String name){
+    public Object selection(@PathVariable ("name") String name){ // creates and abstract object
 
         Agency agency = agencies.findByName(name);
-        return agency;
+        Resource resource = resources.findByName(name);
+
+        if (agency != null){
+            return agency;
+        }
+        if (resource != null){
+            return  resource;
+        }
+        return null;
     }
 }
 
