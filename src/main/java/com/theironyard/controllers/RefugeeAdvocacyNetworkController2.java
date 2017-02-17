@@ -103,10 +103,11 @@ public class RefugeeAdvocacyNetworkController2 {
         return resourceList;
     }
 
+
     //get the name of the agency/ resource from the front end
     //go into the database and pull out that one agency out and return that to the front end for display
     @CrossOrigin
-    @RequestMapping ( path = "/result/{name}",  method = RequestMethod.GET)
+    @RequestMapping ( path = "/search/{name}",  method = RequestMethod.GET)
     public Object selection(@PathVariable ("name") String name){ // creates and abstract object
 
         Agency agency = agencies.findByName(name);
