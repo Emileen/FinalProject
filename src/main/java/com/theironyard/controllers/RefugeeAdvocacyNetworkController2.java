@@ -18,17 +18,12 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 
-// key =AIzaSyB8kcA6y95s-t18etG55CGT4v8CyD5p8kM
-
-//https://www.googleapis.com/geolocation/v1/geolocate?key=YOUR_API_KEY
-//https://maps.googleapis.com/maps/api/geocode/json?address=Winnetka&key=AIzaSyB8kcA6y95s-t18etG55CGT4v8CyD5p8kM
-
 /**
  * Created by emileenmarianayagam on 2/8/17.
  */
 
 @RestController
-public class RefugeeAdvocyNetworkController2 {
+public class RefugeeAdvocacyNetworkController2 {
 
     @Autowired
     AgencyRepository agencies;
@@ -110,6 +105,16 @@ public class RefugeeAdvocyNetworkController2 {
             resourceList = (List) resources.findAll();
         }
         return resourceList;
+    }
+
+    //get the name of the agency from the front end
+    //go into the database and pull out that one agency out and return that to the front end for display
+    @CrossOrigin
+    @RequestMapping ( path = "/result/{name}",  method = RequestMethod.GET)
+    public Agency agency (@PathVariable ("name") String name){
+
+        Agency agency = agencies.findByName(name);
+        return agency;
     }
 }
 

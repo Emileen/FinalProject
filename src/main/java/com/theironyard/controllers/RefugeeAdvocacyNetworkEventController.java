@@ -13,13 +13,13 @@ import javax.servlet.http.HttpSession;
  */
 
 @RestController
-public class RefugeeAdvocyNetworkEventController {
+public class RefugeeAdvocacyNetworkEventController {
 
     @Autowired
     UserRepository users;
 
     //login in user and has the password so that next time it can be verified and they can enter the site
-  /*  @CrossOrigin
+   @CrossOrigin
     @RequestMapping(path  = "/login", method = RequestMethod.POST)
     public String login(HttpSession session, String name, String password, String email) throws Exception {
         User user = users.findFirstByName(name);
@@ -32,9 +32,9 @@ public class RefugeeAdvocyNetworkEventController {
         session.setAttribute("name", name);
 
         return "redirect:/create-event";
-    }*/
+    }
 
-    @CrossOrigin
+/*    @CrossOrigin
     @RequestMapping(path  = "/login", method = RequestMethod.POST)
     public String login(HttpSession session, @RequestBody User user ) throws Exception {
         User currentUser = users.findFirstByName(user.getName()); // get current user
@@ -47,7 +47,7 @@ public class RefugeeAdvocyNetworkEventController {
         session.setAttribute("name", currentUser.getName());
 
         return "redirect:/create-event";
-    }
+    }*/
 
     @CrossOrigin
     @RequestMapping (path ="/create-event", method = RequestMethod.GET)
