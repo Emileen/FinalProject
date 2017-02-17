@@ -86,8 +86,10 @@ app.factory('regFormService', function ($http) {
 app.factory('charlotteMapService', function ($http) {
     let agencies = [];
     let healthClinics = [];
-    let schools = [];
+    let cisSchools = [];
     let libraries = [];
+    let hospitals = [];
+    let parks = [];
 
     return {
         getAgencies() {
@@ -107,20 +109,39 @@ app.factory('charlotteMapService', function ($http) {
             
         },
 
-        getSchools() {
-            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/schools/').then(function (response) {
+        getCisSchools() {
+            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/communitiesinschools/').then(function (response) {
                 // angular.copy(response.data, healthClinics);
                 return response.data;
             });
             
         },
 
+        getLanguageImmersionSchools() {
+            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/languageimmersion/').then(function (response) {
+                // angular.copy(response.data, healthClinics);
+                return response.data;
+            });
+            
+        },
 
         getLibraries() {
             return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/libraries.geojson').then(function (response) {
                 return response.data;
             });
-        }
+        },
+
+        getHospitals() {
+            return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/hospitals.geojson').then(function (response) {
+                return response.data;
+            });
+        },
+
+        getParks() {
+            return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/parks.geojson').then(function(response) {
+                return response.data;
+            });
+        },
     }
 });
 
