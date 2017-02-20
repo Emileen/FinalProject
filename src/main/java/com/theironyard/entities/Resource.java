@@ -31,6 +31,12 @@ public class Resource {
     String category;
 
     @Column
+    String website;
+
+    @Column
+    String photo;
+
+    @Column
     double latitude;
 
     @Column
@@ -68,6 +74,18 @@ public class Resource {
         setLatLongValues();
     }
 
+    public Resource(String name, String address, String contactNumber, String category, String website, String photo) {
+        this.name = name;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.category = category;
+        this.website = website;
+        this.photo = photo;
+        //setLatLongValues();
+    }
+
+
+
     public int getId() {
         return id;
     }
@@ -90,10 +108,10 @@ public class Resource {
 
     public void setAddress(String address) {
         this.address = address;
-        setLatLongValues();
+        //setLatLongValues();
     }
 
-    private void setLatLongValues() {
+    public void setLatLongValues() {
         Map<String, String> urlParms = new HashMap<>();
         urlParms.put("accessKey", System.getenv("GOOGLE_API_KEY"));
         urlParms.put("address", getAddress());
@@ -135,5 +153,21 @@ public class Resource {
 
     public void setLongitude(float longitude) {
         this.longitude = longitude;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

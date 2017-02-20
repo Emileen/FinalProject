@@ -41,6 +41,7 @@ public class RefugeeAdvocacyNetworkController2 {
                 String line = fileScanner.nextLine();
                 String[] columns = line.split(",");
                 Agency oneAgency = new Agency(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5]);
+                oneAgency.setLatLongValues();
                 agencies.save(oneAgency);
             }
         }
@@ -51,8 +52,8 @@ public class RefugeeAdvocacyNetworkController2 {
             while (fileScanner.hasNext()) {
                 String line = fileScanner.nextLine();
                 String[] columns = line.split(",");
-                Resource oneResource = new Resource(columns[0], columns[1], columns[2], columns[3]);
-
+                Resource oneResource = new Resource(columns[0], columns[1], columns[2], columns[3],columns [4],columns [5]);
+                oneResource.setLatLongValues();
                 // find lat/long
                 resources.save(oneResource);
             }
@@ -96,6 +97,8 @@ public class RefugeeAdvocacyNetworkController2 {
         } else if (category.equalsIgnoreCase("LanguageImmersion")) {
             resourceList = resources.findByCategoryIgnoreCase(category);
         } else if (category.equalsIgnoreCase("CommunitiesInSchools")) {
+            resourceList = resources.findByCategoryIgnoreCase(category);
+        } else if(category.equalsIgnoreCase("library")){
             resourceList = resources.findByCategoryIgnoreCase(category);
         } else {
             resourceList = (List) resources.findAll();

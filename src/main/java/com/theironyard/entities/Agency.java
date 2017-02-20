@@ -68,7 +68,7 @@ public class Agency {
         this.contactPerson = contactPerson;
         this.email = email;
         this.website = website;
-        setLatLongValues();
+       // setLatLongValues();
     }
 
     public Agency(String name, String address, String phoneNumber, String contactPerson, String email, String website, double latitude, double longitude) {
@@ -80,7 +80,7 @@ public class Agency {
         this.website = website;
         this.latitude = latitude;
         this.longitude = longitude;
-        setLatLongValues();
+       // setLatLongValues();
     }
 
     public Agency(String name, String address, String phoneNumber, String contactPerson, String email, String website) {
@@ -90,7 +90,7 @@ public class Agency {
         this.contactPerson = contactPerson;
         this.email = email;
         this.website = website;
-        setLatLongValues();
+        //
     }
 
     public int getId() {
@@ -115,7 +115,7 @@ public class Agency {
 
     public void setAddress(String address) {
         this.address = address;
-        setLatLongValues();
+        //setLatLongValues();
     }
 
     @JsonIgnore
