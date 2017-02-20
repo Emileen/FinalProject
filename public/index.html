@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="dist/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="dist/leaflet-search.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="node_modules/foundation-sites/dist/css/foundation-sites.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
+    <!--<link rel="stylesheet" href="node_modules/foundation-sites/dist/css/foundation-sites.min.css">-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <!--add js file-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
@@ -21,59 +22,50 @@
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://use.fontawesome.com/f87065da5f.js"></script>
     <script src="dist/leaflet.awesome-markers.js"></script>
-    <script src="https://rawgit.com/calvinmetcalf/leaflet-ajax/master/dist/leaflet.ajax.min.js"></script>
     <script src="app.js"></script>
 
 </head>
 
 <body ng-app="NetworkApp">
 
-    <div class="contain-to-grid sticky">
-        <nav class="top-bar" id="main-menu" data-topbar role="navigation" data-options="sticky_on: [medium,large]">
-            <!--<div class="top-bar-left">
-                <ul class="title-area">
-                    <li class="name">
-                        <h2><a href="#">Connected Communities</a></h2>
-                    </li>
-                </ul>
-            </div>-->
-            <section class="top-bar-right">
-                <!-- Right Nav Section -->
-                <ul class="menu vertical medium-horizontal expanded right" data-responsive-menu="drilldown medium-dropdown">
-                    <li><a href="#">Log In</a></li>
-                    <li><a ui-sref="join-network">Join the Network</a></li>
-                </ul>
-            </section>
-        </nav>
-    </div>
-
-    <header>
-        <nav>
-
-            <li><a ui-sref="view-network">Network Members</a></li>
-            <li><a ui-sref="charlotte-map">Resource Map</a></li>
-            <li><a href="#">Calendar</a></li>
-            <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-        </nav>
-    </header>
-
-    <div class="row">
-        <div class="large-12 columns panel">
-            <h1>Connected Communities Project</h1>
-            <h2>A Refugee and Immigrant Resource Network</h2>
+    <!-- Top Bar -->
+    <!--<div class="contain-to-grid sticky">-->
+    <section class="top-bar" id="main-menu" data-options="sticky_on: [medium,large]">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li id="title"></li>
+            </ul>
         </div>
-    </div>
-    </nav>
+        <div class="top-bar-right">
+            <ul class="menu vertical medium-horizontal expanded right" data-responsive-menu="drilldown medium-dropdown">
+                <li><a href="#">Log In</a></li>
+                <li><a ui-sref="join-network">Join the Network</a></li>
+            </ul>
+        </div>
+    </section>
 
-    <!--<nav>
-        <ul>
-            <li><a ui-sref="join-network">Join the Network</a></li>
-            <li><a ui-sref="view-network">View Network Members</a></li>
-            <li><a ui-sref="charlotte-map">Charlotte Resource Map</a></li>
-            <li><a ui-sref="view-health">Community Health Clinics</a></li>
-        </ul>
-    </nav>-->
+    <!--</div>-->
 
+    <!-- Hero Photo Header -->
+    <section class="hero">
+        <div class="row intro">
+            <div class="small-centered medium-uncentered medium-6 large-7 columns">
+                <h1>Connecting Communities</h1>
+                <p>A Refugee and Immigrant Resource Network</p>
+            </div>
+    </section>
+
+    <!-- Menu Bar -->
+
+    <ul id="menu-bar">
+        <li class="menu-list"><a ui-sref="view-network">Network Members</a></li>
+        <li class="menu-list"><a ui-sref="charlotte-map">Resource Map</a></li>
+        <li class="menu-list"><a href="#">Calendar</a></li>
+    </ul>
+
+
+
+    <!-- Map and Join Menu Views -->
     <ui-view></ui-view>
 
 </body>

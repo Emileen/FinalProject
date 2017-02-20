@@ -11,11 +11,13 @@ gulp.task('html', function () {
     // Now that I have a templates directory, I also need to copy 
     // those over.
     gulp.src('templates/*.html')
-        .pipe(gulp.dest('public/templates'));
+        .pipe(gulp.dest('public/templates'))
+        .pipe(gulp.dest('src/main/resources/static/templates'));
 
     // Copy index.html into the public/ directory.
     return gulp.src('index.html')
-        .pipe(gulp.dest('public/'));
+        .pipe(gulp.dest('public/'))
+        .pipe(gulp.dest('src/main/resources/templates/'));
 });
 
 gulp.task('css', function () {
@@ -23,14 +25,16 @@ gulp.task('css', function () {
     // Copy to public/
     return gulp.src('scss/style.scss')
         .pipe(sass()) // requires gulp-sass
-        .pipe(gulp.dest('public/'));
+        .pipe(gulp.dest('public/'))
+        .pipe(gulp.dest('src/main/resources/static/css/'));
 });
 
 gulp.task('js', function () {
     // Copy js file into public/
     return gulp.src('js/app.js')
         .pipe(browser.browserify())
-        .pipe(gulp.dest('public/'));
+        .pipe(gulp.dest('public/'))
+        .pipe(gulp.dest('src/main/resources/static/js/'));
 });
 
 gulp.task('watch', ['default'], function () {
