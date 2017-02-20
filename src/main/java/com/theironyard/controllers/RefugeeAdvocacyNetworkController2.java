@@ -1,5 +1,4 @@
 package com.theironyard.controllers;
-
 import com.theironyard.entities.Agency;
 import com.theironyard.entities.Resource;
 import com.theironyard.services.AgencyRepository;
@@ -7,7 +6,6 @@ import com.theironyard.services.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -64,7 +62,7 @@ public class RefugeeAdvocacyNetworkController2 {
 
     //diaplay a list of agencies
     @CrossOrigin
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(path = "/agencies", method = RequestMethod.GET)
     public List<Agency> showAgencies() {
         return agencies.findAll();
     }
