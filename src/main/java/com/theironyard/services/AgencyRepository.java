@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface AgencyRepository extends CrudRepository<Agency, Integer> {
    List<Agency> findAll();
-   Agency findByName (String name);
+   List<Agency> findByNameContainsIgnoreCase(String name);
 
 }
