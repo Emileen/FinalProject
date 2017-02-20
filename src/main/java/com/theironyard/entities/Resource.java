@@ -120,6 +120,8 @@ public class Resource {
         if (thislocation.getResults().size() >= 1) { // if the address exists then register
             this.latitude = thislocation.getResults().get(0).getGeometry().getLocation().getLat();
             this.longitude = thislocation.getResults().get(0).getGeometry().getLocation().getLng();
+        }else{
+            System.out.println( "could not find lat&lng for address " + address);
         }
     }
 
