@@ -113,18 +113,22 @@ public class RefugeeAdvocacyNetworkController2 {
     //go into the database and pull out that one agency out and return that to the front end for display
     @CrossOrigin
     @RequestMapping ( path = "/search/{name}",  method = RequestMethod.GET)
-    public Object selection(@PathVariable ("name") String name){ // creates and abstract object
+    //(/search)
+    public Object selection(@PathVariable String name){ // creates and abstract object
+        // String name
+        //?name=
 
-        Agency agency = agencies.findByName(name);
-        Resource resource = resources.findByName(name);
+        List<Object> things = new ArrayList<>();
 
-        if (agency != null){
-            return agency;
-        }
-        if (resource != null){
-            return  resource;
-        }
-        return null;
+        List<Agency> agency = agencies.findByNameContainsIgnoreCase(name);
+
+        things.addAll(agency);
+
+        List<Resource> resource = resources.findByNameContainsIgnoreCase(name);
+
+        things.addAll(resource);
+
+        return things;
     }
 }
 
