@@ -25,7 +25,7 @@ gulp.task('css', function () {
     // Copy to public/
     return gulp.src('scss/style.scss')
         .pipe(sass()) // requires gulp-sass
-        .pipe(gulp.dest('public/'))
+        .pipe(gulp.dest('public/css'))
         .pipe(gulp.dest('src/main/resources/static/css/'));
 });
 
@@ -33,7 +33,7 @@ gulp.task('js', function () {
     // Copy js file into public/
     return gulp.src('js/app.js')
         .pipe(browser.browserify())
-        .pipe(gulp.dest('public/'))
+        .pipe(gulp.dest('public/js'))
         .pipe(gulp.dest('src/main/resources/static/js/'));
 });
 

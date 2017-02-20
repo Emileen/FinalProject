@@ -392,17 +392,15 @@ module.exports = {
 
         return {
             getAgencies() {
-                return $http.get('https://connectingcommunities.herokuapp.com/').then(function (response) {
-                    // angular.copy(response.data, agencies);
+                return $http.get('https://connectingcommunities.herokuapp.com/agencies').then(function (response) {
                     return response.data;
                 });
 
-                // return agencies;
+               
             },
 
             getHealthClinics() {
                 return $http.get('https://connectingcommunities.herokuapp.com/resource/health/').then(function (response) {
-                    // angular.copy(response.data, healthClinics);
                     return response.data;
                 });
 
@@ -410,7 +408,6 @@ module.exports = {
 
             getCisSchools() {
                 return $http.get('https://connectingcommunities.herokuapp.com/resource/communitiesinschools/').then(function (response) {
-                    // angular.copy(response.data, healthClinics);
                     return response.data;
                 });
 
@@ -418,7 +415,6 @@ module.exports = {
 
             getLanguageImmersionSchools() {
                 return $http.get('https://connectingcommunities.herokuapp.com/resource/languageimmersion/').then(function (response) {
-                    // angular.copy(response.data, healthClinics);
                     return response.data;
                 });
 
@@ -437,7 +433,7 @@ module.exports = {
                     angular.copy(response.data, searchLocations);
                 });
                 console.log(response);
-                // return name;
+               
             },
 
         };
