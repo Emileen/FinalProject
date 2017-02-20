@@ -33,7 +33,7 @@ public class RefugeeAdvocacyNetworkController2 {
 
     @PostConstruct
     //loads the agency csv file into the database
-    public void init() throws FileNotFoundException {
+    public void init() throws FileNotFoundException, InterruptedException {
         if (agencies.count() == 0) {
             File f = new File("agency.csv");
             Scanner fileScanner = new Scanner(f);
@@ -41,6 +41,7 @@ public class RefugeeAdvocacyNetworkController2 {
                 String line = fileScanner.nextLine();
                 String[] columns = line.split(",");
                 Agency oneAgency = new Agency(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5]);
+                Thread.sleep(250);
                 oneAgency.setLatLongValues();
                 agencies.save(oneAgency);
             }
@@ -53,6 +54,7 @@ public class RefugeeAdvocacyNetworkController2 {
                 String line = fileScanner.nextLine();
                 String[] columns = line.split(",");
                 Resource oneResource = new Resource(columns[0], columns[1], columns[2], columns[3],columns [4],columns [5]);
+                Thread.sleep(250);
                 oneResource.setLatLongValues();
                 // find lat/long
                 resources.save(oneResource);
