@@ -3,10 +3,13 @@ const app = angular.module('NetworkApp', ['ui.router']);
 let joinNetwork = require('./controllers/joinNetwork');
 let viewNetwork = require('./controllers/viewNetwork');
 let charlotteMap = require('./controllers/charlotteMap');
+let viewHealthClinics = require('./controllers/viewHealthClinics');
+
 const controllers = [
     joinNetwork,
     viewNetwork,
     charlotteMap,
+    viewHealthClinics,
 ];
 
 for (let i = 0; i < controllers.length; i++) {
@@ -32,131 +35,133 @@ app.config(function ($stateProvider) {
         name: 'charlotte-map',
         url: '/charlotteMap',
         component: 'charlotteMap',
-    })
-});
+    });
 
-
-/* Defining a component */
-app.component('joinNetwork', {
-    controller: 'joinNetwork',
-    templateUrl: 'templates/joinNetwork.html',
-});
-
-app.component('viewNetwork', {
-    controller: 'viewNetwork',
-    templateUrl: 'templates/viewNetwork.html',
-});
-
-app.component('charlotteMap', {
-    controller: 'charlotteMap',
-    templateUrl: 'templates/charlotteMap.html',
-});
-
-
-/* Services */
-app.factory('regFormService', function ($http) {
-    let forms = [];
-
-    return {
-
-        add(registration) {
-            $http.post('https://stormy-badlands-83991.herokuapp.com/registration', {
-                name: registration.name,
-                address: registration.address,
-                phoneNumber: registration.phoneNumber,
-                email: registration.email,
-                contactPerson: registration.contactPerson,
-                website: registration.website,
-            });
-            console.log(registration);
-        },
-
-        getAll() {
-            $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
-                angular.copy(response.data, forms);
-            });
-
-            return forms;
-        },
-
-    };
+    $stateProvider.state({
+        name: 'view-health',
+        url: '/viewHealthClinics',
+        component: 'viewHealthClinics',
+    });
 
 })
 
-app.factory('charlotteMapService', function ($http) {
-    let agencies = [];
-    let healthClinics = [];
-    let cisSchools = [];
-    let libraries = [];
-    let hospitals = [];
-    let parks = [];
+ /* Defining a component */
+    app.component('joinNetwork', {
+        controller: 'joinNetwork',
+        templateUrl: 'templates/joinNetwork.html',
+    });
 
-    return {
-        getAgencies() {
-            return $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
-                // angular.copy(response.data, agencies);
-                return response.data;
-            });
+    app.component('viewNetwork', {
+        controller: 'viewNetwork',
+        templateUrl: 'templates/viewNetwork.html',
+    });
 
-            // return agencies;
-        },
-       
-        getHealthClinics() {
-            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/health/').then(function (response) {
-                // angular.copy(response.data, healthClinics);
-                return response.data;
-            });
-            
-        },
+    app.component('charlotteMap', {
+        controller: 'charlotteMap',
+        templateUrl: 'templates/charlotteMap.html',
+    });
 
-        getCisSchools() {
-            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/communitiesinschools/').then(function (response) {
-                // angular.copy(response.data, healthClinics);
-                return response.data;
-            });
-            
-        },
+    app.component('viewHealth', {
+        controller: 'viewHealthClinics',
+        templateUrl: 'templates/viewHealthClinics.html',
+    });
 
-        getLanguageImmersionSchools() {
-            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/languageimmersion/').then(function (response) {
-                // angular.copy(response.data, healthClinics);
-                return response.data;
-            });
-            
-        },
+       /* Services */
+    app.factory('regFormService', function ($http) {
+        let forms = [];
 
-        getLibraries() {
-            return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/libraries.geojson').then(function (response) {
-                return response.data;
-            });
-        },
+        return {
 
-        getHospitals() {
-            return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/hospitals.geojson').then(function (response) {
-                return response.data;
-            });
-        },
+            add(registration) {
+                $http.post('https://stormy-badlands-83991.herokuapp.com/registration', {
+                    name: registration.name,
+                    address: registration.address,
+                    phoneNumber: registration.phoneNumber,
+                    email: registration.email,
+                    contactPerson: registration.contactPerson,
+                    website: registration.website,
+                });
+                console.log(registration);
+            },
 
-        getParks() {
-            return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/parks.geojson').then(function(response) {
-                return response.data;
-            });
-        },
-    }
-});
+            getAll() {
+                $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
+                    angular.copy(response.data, forms);
+                });
 
-//leaflet stuff
-// window.addEventListener('load', function () {
-//  var mymap = L.map('mapid').setView([35.226944, -80.843333], 13);
+                return forms;
+            },
 
-//         L.tileLayer('https://api.mapbox.com/styles/v1/lclark070607/ciz2xr2gg002r2rqb9g2r41ut/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag', {
-//             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//             maxZoom: 18,
-//             id: 'mapbox.streets',
-//             accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
-//         }).addTo(mymap);
+        };
 
-// })
+    })
 
+    app.factory('charlotteMapService', function ($http) {
+        let agencies = [];
+        let healthClinics = [];
+        let cisSchools = [];
+        let libraries = [];
+        let hospitals = [];
+        let parks = [];
 
+        return {
+            getAgencies() {
+                return $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
+                    // angular.copy(response.data, agencies);
+                    return response.data;
+                });
 
+                // return agencies;
+            },
+
+            getHealthClinics() {
+                return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/health/').then(function (response) {
+                    // angular.copy(response.data, healthClinics);
+                    return response.data;
+                });
+
+            },
+
+            getCisSchools() {
+                return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/communitiesinschools/').then(function (response) {
+                    // angular.copy(response.data, healthClinics);
+                    return response.data;
+                });
+
+            },
+
+            getLanguageImmersionSchools() {
+                return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/languageimmersion/').then(function (response) {
+                    // angular.copy(response.data, healthClinics);
+                    return response.data;
+                });
+
+            },
+
+            getLibraries() {
+                return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/libraries/').then(function (response) {
+                    // angular.copy(response.data, healthClinics);
+                    return response.data;
+                });
+
+            },
+
+            // getLibraries() {
+            //     return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/libraries.geojson').then(function (response) {
+            //         return response.data;
+            //     });
+            // },
+
+            // getHospitals() {
+            //     return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/hospitals.geojson').then(function (response) {
+            //         return response.data;
+            //     });
+            // },
+
+            // getParks() {
+            //     return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/parks.geojson').then(function (response) {
+            //         return response.data;
+            //     });
+            // },
+        }
+    });
