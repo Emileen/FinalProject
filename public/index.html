@@ -1,7 +1,4 @@
 <!doctype html>
-<!--Dont forget to run gulp after you set up basic html structure, this
-saves it to the public directory.  Actually you can run gulp watch to keep
-gulp files updated-->
 
 <html>
 
@@ -13,32 +10,69 @@ gulp files updated-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="dist/leaflet.awesome-markers.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules/foundation-sites/dist/css/foundation-sites.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
 
     <!--add js file-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
     <script src="https://npmcdn.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://use.fontawesome.com/f87065da5f.js"></script>
-    <script src="js/leaflet.awesome-markers.js"></script>
+    <script src="dist/leaflet.awesome-markers.js"></script>
+    <script src="https://rawgit.com/calvinmetcalf/leaflet-ajax/master/dist/leaflet.ajax.min.js"></script>
     <script src="app.js"></script>
-    
-
 
 </head>
 
 <body ng-app="NetworkApp">
 
-    <h1>Refugee Advocacy Network</h1>
+    <div class="contain-to-grid sticky">
+        <nav class="top-bar" id="main-menu" data-topbar role="navigation" data-options="sticky_on: [medium,large]">
+            <!--<div class="top-bar-left">
+                <ul class="title-area">
+                    <li class="name">
+                        <h2><a href="#">Connected Communities</a></h2>
+                    </li>
+                </ul>
+            </div>-->
+            <section class="top-bar-right">
+                <!-- Right Nav Section -->
+                <ul class="menu vertical medium-horizontal expanded right" data-responsive-menu="drilldown medium-dropdown">
+                    <li><a href="#">Log In</a></li>
+                    <li><a ui-sref="join-network">Join the Network</a></li>
+                </ul>
+            </section>
+        </nav>
+    </div>
 
-    <nav>
+    <header>
+        <nav>
+
+            <li><a ui-sref="view-network">Network Members</a></li>
+            <li><a ui-sref="charlotte-map">Resource Map</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+        </nav>
+    </header>
+
+    <div class="row">
+        <div class="large-12 columns panel">
+            <h1>Connected Communities Project</h1>
+            <h2>A Refugee and Immigrant Resource Network</h2>
+        </div>
+    </div>
+    </nav>
+
+    <!--<nav>
         <ul>
             <li><a ui-sref="join-network">Join the Network</a></li>
             <li><a ui-sref="view-network">View Network Members</a></li>
             <li><a ui-sref="charlotte-map">Charlotte Resource Map</a></li>
+            <li><a ui-sref="view-health">Community Health Clinics</a></li>
         </ul>
-    </nav>
+    </nav>-->
 
     <ui-view></ui-view>
 

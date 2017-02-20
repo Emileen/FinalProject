@@ -4,10 +4,13 @@ const app = angular.module('NetworkApp', ['ui.router']);
 let joinNetwork = require('./controllers/joinNetwork');
 let viewNetwork = require('./controllers/viewNetwork');
 let charlotteMap = require('./controllers/charlotteMap');
+let viewHealthClinics = require('./controllers/viewHealthClinics');
+
 const controllers = [
     joinNetwork,
     viewNetwork,
     charlotteMap,
+    viewHealthClinics,
 ];
 
 for (let i = 0; i < controllers.length; i++) {
@@ -33,249 +36,364 @@ app.config(function ($stateProvider) {
         name: 'charlotte-map',
         url: '/charlotteMap',
         component: 'charlotteMap',
-    })
-});
+    });
 
-
-/* Defining a component */
-app.component('joinNetwork', {
-    controller: 'joinNetwork',
-    templateUrl: 'templates/joinNetwork.html',
-});
-
-app.component('viewNetwork', {
-    controller: 'viewNetwork',
-    templateUrl: 'templates/viewNetwork.html',
-});
-
-app.component('charlotteMap', {
-    controller: 'charlotteMap',
-    templateUrl: 'templates/charlotteMap.html',
-});
-
-
-/* Services */
-app.factory('regFormService', function ($http) {
-    let forms = [];
-
-    return {
-
-        add(registration) {
-            $http.post('https://stormy-badlands-83991.herokuapp.com/registration', {
-                name: registration.name,
-                address: registration.address,
-                phoneNumber: registration.phoneNumber,
-                email: registration.email,
-                contactPerson: registration.contactPerson,
-                website: registration.website,
-            });
-            console.log(registration);
-        },
-
-        getAll() {
-            $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
-                angular.copy(response.data, forms);
-            });
-
-            return forms;
-        },
-
-    };
+    $stateProvider.state({
+        name: 'view-health',
+        url: '/viewHealthClinics',
+        component: 'viewHealthClinics',
+    });
 
 })
 
-app.factory('charlotteMapService', function ($http) {
-    let agencies = [];
-    let healthClinics = [];
-    let cisSchools = [];
-    let libraries = [];
-    let hospitals = [];
-    let parks = [];
+ /* Defining a component */
+    app.component('joinNetwork', {
+        controller: 'joinNetwork',
+        templateUrl: 'templates/joinNetwork.html',
+    });
 
-    return {
-        getAgencies() {
-            return $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
-                // angular.copy(response.data, agencies);
-                return response.data;
-            });
+    app.component('viewNetwork', {
+        controller: 'viewNetwork',
+        templateUrl: 'templates/viewNetwork.html',
+    });
 
-            // return agencies;
-        },
-       
-        getHealthClinics() {
-            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/health/').then(function (response) {
-                // angular.copy(response.data, healthClinics);
-                return response.data;
-            });
-            
-        },
+    app.component('charlotteMap', {
+        controller: 'charlotteMap',
+        templateUrl: 'templates/charlotteMap.html',
+    });
 
-        getCisSchools() {
-            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/communitiesinschools/').then(function (response) {
-                // angular.copy(response.data, healthClinics);
-                return response.data;
-            });
-            
-        },
+    app.component('viewHealth', {
+        controller: 'viewHealthClinics',
+        templateUrl: 'templates/viewHealthClinics.html',
+    });
 
-        getLanguageImmersionSchools() {
-            return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/languageimmersion/').then(function (response) {
-                // angular.copy(response.data, healthClinics);
-                return response.data;
-            });
-            
-        },
+       /* Services */
+    app.factory('regFormService', function ($http) {
+        let forms = [];
 
-        getLibraries() {
-            return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/libraries.geojson').then(function (response) {
-                return response.data;
-            });
-        },
+        return {
 
-        getHospitals() {
-            return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/hospitals.geojson').then(function (response) {
-                return response.data;
-            });
-        },
+            add(registration) {
+                $http.post('https://stormy-badlands-83991.herokuapp.com/registration', {
+                    name: registration.name,
+                    address: registration.address,
+                    phoneNumber: registration.phoneNumber,
+                    email: registration.email,
+                    contactPerson: registration.contactPerson,
+                    website: registration.website,
+                });
+                console.log(registration);
+            },
 
-        getParks() {
-            return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/parks.geojson').then(function(response) {
-                return response.data;
-            });
-        },
-    }
-});
+            getAll() {
+                $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
+                    angular.copy(response.data, forms);
+                });
 
-//leaflet stuff
-// window.addEventListener('load', function () {
-//  var mymap = L.map('mapid').setView([35.226944, -80.843333], 13);
+                return forms;
+            },
 
-//         L.tileLayer('https://api.mapbox.com/styles/v1/lclark070607/ciz2xr2gg002r2rqb9g2r41ut/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag', {
-//             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//             maxZoom: 18,
-//             id: 'mapbox.streets',
-//             accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
-//         }).addTo(mymap);
+        };
 
-// })
+    })
 
+    app.factory('charlotteMapService', function ($http) {
+        let agencies = [];
+        let healthClinics = [];
+        let cisSchools = [];
+        let libraries = [];
+        let hospitals = [];
+        let parks = [];
 
+        return {
+            getAgencies() {
+                return $http.get('https://stormy-badlands-83991.herokuapp.com/').then(function (response) {
+                    // angular.copy(response.data, agencies);
+                    return response.data;
+                });
 
+                // return agencies;
+            },
 
-},{"./controllers/charlotteMap":2,"./controllers/joinNetwork":3,"./controllers/viewNetwork":4}],2:[function(require,module,exports){
+            getHealthClinics() {
+                return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/health/').then(function (response) {
+                    // angular.copy(response.data, healthClinics);
+                    return response.data;
+                });
+
+            },
+
+            getCisSchools() {
+                return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/communitiesinschools/').then(function (response) {
+                    // angular.copy(response.data, healthClinics);
+                    return response.data;
+                });
+
+            },
+
+            getLanguageImmersionSchools() {
+                return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/languageimmersion/').then(function (response) {
+                    // angular.copy(response.data, healthClinics);
+                    return response.data;
+                });
+
+            },
+
+            getLibraries() {
+                return $http.get('https://stormy-badlands-83991.herokuapp.com/resource/libraries/').then(function (response) {
+                    // angular.copy(response.data, healthClinics);
+                    return response.data;
+                });
+
+            },
+
+            // getLibraries() {
+            //     return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/libraries.geojson').then(function (response) {
+            //         return response.data;
+            //     });
+            // },
+
+            // getHospitals() {
+            //     return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/hospitals.geojson').then(function (response) {
+            //         return response.data;
+            //     });
+            // },
+
+            // getParks() {
+            //     return $http.get('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/parks.geojson').then(function (response) {
+            //         return response.data;
+            //     });
+            // },
+        }
+    });
+
+},{"./controllers/charlotteMap":2,"./controllers/joinNetwork":3,"./controllers/viewHealthClinics":4,"./controllers/viewNetwork":5}],2:[function(require,module,exports){
 module.exports = {
     name: 'charlotteMap',
     func: function ($scope, charlotteMapService) {
-        var mymap = L.map('mapid').setView([35.226944, -80.843333], 13);
+        // different layer groups
+        const layers = {
+            agencies: null,
+            health: null,
+            schoolsC: null,
+            schoolsL: null,
+            cmLibraries: null,
+            all: null,
+        };
+
+// hiding markers
+        // $scope.hideAgencies = function () {
+        //     layers.agencies.removeFrom(mymap);
+        // };
+
+
+// showing markers
+        $scope.showAgencies = function () {
+            layers.agencies.addTo(mymap);
+            layers.health.removeFrom(mymap);
+            layers.schoolsC.removeFrom(mymap);
+            layers.schoolsL.removeFrom(mymap);
+            // layers.cmLibraries.removeFrom(mymap);
+        };
+
+        $scope.showHealth = function () {
+            layers.agencies.removeFrom(mymap);
+            layers.health.addTo(mymap);
+            layers.schoolsC.removeFrom(mymap);
+            layers.schoolsL.removeFrom(mymap);
+            // layers.cmLibraries.removeFrom(mymap);
+        };
+
+        $scope.showSchoolsC = function () {
+            layers.agencies.removeFrom(mymap);
+            layers.health.removeFrom(mymap);
+            layers.schoolsC.addTo(mymap);
+            layers.schoolsL.addTo(mymap);
+            // layers.cmLibraries.removeFrom(mymap);
+        };
+
+        // $scope.cmLibraries = function () {
+        //     layers.agencies.removeFrom(mymap);
+        //     layers.health.removeFrom(mymap);
+        //     layers.schoolsC.removeFrom(mymap);
+        //     layers.schoolsL.removeFrom(mymap);
+        //     layers.cmLibraries.addTo(mymap);
+        // };
+
+        $scope.showAll = function () {
+            layers.agencies.addTo(mymap);
+            layers.health.addTo(mymap);
+            layers.schoolsC.addTo(mymap);
+            layers.schoolsL.addTo(mymap);
+            // layers.cmLibraries.addTo(mymap);
+        };
+
+        
+
+        let mymap = L.map('mapid').setView([35.226944, -80.843333], 13);
 
         L.tileLayer('https://api.mapbox.com/styles/v1/lclark070607/ciz2xr2gg002r2rqb9g2r41ut/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            maxZoom: 18,
+            maxZoom: 13,
             minZoom: 5,
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
         }).addTo(mymap);
 
 
-
-
-
         charlotteMapService.getAgencies().then(function (agencies) {
+            let markers = [];
 
-            let agenciesArray = [];
-
-            // let buildingIcon = L.icon({
-            //     iconUrl: 'img/building-15.svg',
-            //     iconSize: [24, 24],
-            //     iconAnchor: [12, 22],
-            //     popupAnchor: [0, -24],
-            // });
-            var redMarker = L.AwesomeMarkers.icon({
-                icon: 'coffee',
-                markerColor: 'red'
+            let agencyIcon = L.AwesomeMarkers.icon({
+                icon: 'fa-institution',
+                prefix: 'fa',
+                markerColor: 'red',
+                iconAnchor: [12, 22],
+                popupAnchor: [0, -24],
             });
 
-
             for (let i = 0; i < agencies.length; i++) {
-                agenciesArray = new L.marker([agencies[i].latitude, agencies[i].longitude], { icon: redMarker }).addTo(mymap);
+                let agency = new L.marker([agencies[i].latitude, agencies[i].longitude], { icon: agencyIcon });
 
                 let popup = L.popup({
                     minWidth: 250,
                 }).setContent('<h3>' + agencies[i].name + '</h3><br>' + agencies[i].address + '<br>' + agencies[i].phoneNumber);
 
-                agenciesArray.bindPopup(popup);
+                agency.bindPopup(popup);
+                markers.push(agency);
             };
+
+            layers.agencies = L.layerGroup(markers);
+            layers.agencies.addTo(mymap);
         });
 
 
-        charlotteMapService.getHealthClinics().then(function (healthClinics) {
-            let healthClinicsArray = [];
 
-            let healthIcon = L.icon({
-                iconUrl: 'img/building-15.svg',
-                iconSize: [24, 24],
+        charlotteMapService.getHealthClinics().then(function (healthClinics) {
+            let markers2 = [];
+
+            let healthIcon = L.AwesomeMarkers.icon({
+                icon: 'fa-heart-o',
+                prefix: 'fa',
+                markerColor: 'green',
                 iconAnchor: [12, 22],
                 popupAnchor: [0, -24],
             });
 
             for (let i = 0; i < healthClinics.length; i++) {
-                healthClinicsArray = new L.marker([healthClinics[i].latitude, healthClinics[i].longitude], { icon: healthIcon }).addTo(mymap);
+                let health = new L.marker([healthClinics[i].latitude, healthClinics[i].longitude], { icon: healthIcon });
 
                 let popup = L.popup({
                     minWidth: 250,
                 }).setContent('<h3>' + healthClinics[i].name + '</h3><br>' + healthClinics[i].address + '<br>' + healthClinics[i].contactNumber);
 
-                healthClinicsArray.bindPopup(popup);
+                health.bindPopup(popup);
+                markers2.push(health);
             };
+
+            layers.health = L.layerGroup(markers2);
+            layers.health.addTo(mymap);
 
         });
 
         charlotteMapService.getCisSchools().then(function (cisSchools) {
+            let markers3 = [];
 
-            let cisSchoolsArray = [];
-
-            let schoolIcon = L.icon({
-                iconUrl: 'img/building-15.svg',
-                iconSize: [24, 24],
+            let schoolIcon = L.AwesomeMarkers.icon({
+                icon: 'fa-book',
+                prefix: 'fa',
+                markerColor: 'blue',
                 iconAnchor: [12, 22],
                 popupAnchor: [0, -24],
             });
 
             for (let i = 0; i < cisSchools.length; i++) {
-                cisSchoolsArray = new L.marker([cisSchools[i].latitude, cisSchools[i].longitude], { icon: schoolIcon }).addTo(mymap);
+                let schoolsC = new L.marker([cisSchools[i].latitude, cisSchools[i].longitude], { icon: schoolIcon });
 
                 let popup = L.popup({
                     minWidth: 250,
                 }).setContent('<h3>' + cisSchools[i].name + '</h3><br>' + cisSchools[i].address + '<br>' + cisSchools[i].contactNumber);
 
-                cisSchoolsArray.bindPopup(popup);
-
+                schoolsC.bindPopup(popup);
+                markers3.push(schoolsC);
             };
+
+            layers.schoolsC = L.layerGroup(markers3);
+            layers.schoolsC.addTo(mymap);
 
         });
 
         charlotteMapService.getLanguageImmersionSchools().then(function (languageImmersionSchools) {
+            let markers4 = [];
 
-            let languageImmersionSchoolsArray = [];
-            let schoolIcon = L.icon({
-                iconUrl: 'img/building-15.svg',
-                iconSize: [24, 24],
+            let schoolLangIcon = L.AwesomeMarkers.icon({
+                icon: 'fa-book',
+                prefix: 'fa',
+                markerColor: 'orange',
                 iconAnchor: [12, 22],
                 popupAnchor: [0, -24],
             });
 
             for (let i = 0; i < languageImmersionSchools.length; i++) {
-                languageImmersionSchoolsArray = new L.marker([languageImmersionSchools[i].latitude, languageImmersionSchools[i].longitude], { icon: schoolIcon }).addTo(mymap);
+                let schoolsL = new L.marker([languageImmersionSchools[i].latitude, languageImmersionSchools[i].longitude], { icon: schoolLangIcon });
 
                 let popup = L.popup({
                     minWidth: 250,
                 }).setContent('<h3>' + languageImmersionSchools[i].name + '</h3><br>' + languageImmersionSchools[i].address + '<br>' + languageImmersionSchools[i].phoneNumber);
 
-                languageImmersionSchoolsArray.bindPopup(popup);
-
-            }
+                schoolsL.bindPopup(popup);
+                markers4.push(schoolsL);
+            };
+            layers.schoolsL = L.layerGroup(markers4);
+            layers.schoolsL.addTo(mymap);
 
         });
+
+        charlotteMapService.getLibraries().then(function (libraries) {
+            let markers5 = [];
+
+            let librariesIcon = L.AwesomeMarkers.icon({
+                icon: 'fa-book',
+                prefix: 'fa',
+                markerColor: 'yellow',
+                iconAnchor: [12, 22],
+                popupAnchor: [0, -24],
+            });
+
+            for (let i = 0; i < libraries.length; i++) {
+                let cmLibraries = new L.marker([libraries[i].latitude, libraries[i].longitude], { icon: librariesIcon });
+
+                let popup = L.popup({
+                    minWidth: 250,
+                }).setContent('<h3>' + libraries[i].name + '</h3><br>' + libraries[i].address + '<br>' + libraries[i].phoneNumber);
+
+                cmLibraries.bindPopup(popup);
+                markers4.push(schoolsL);
+            };
+            layers.cmLibraries = L.layerGroup(markers5);
+            layers.cmLibraries.addTo(mymap);
+
+        });
+
+        //GeoJSON layer - incomplete info from api
+
+        // let cmLibraries = [];
+
+        // var geojsonLayer = L.geoJson.ajax('https://raw.githubusercontent.com/mecklenburg-gis/mecklenburg-gis-opendata/master/data/libraries.geojson', {
+        //     onEachFeature: function (data, layer) {
+        //         cmLibraries.push(layer);
+        //         layer.bindPopup('<h3>' + data.properties.name + '</h3><br>' + '<p>' + data.properties.address + '</p>');
+        //     }
+        // });
+
+        // geojsonLayer.addTo(mymap);
+
+
+
+
+
+
+
 
 
         // charlotteMapService.getLibraries().then(function (libraries) {
@@ -370,6 +488,14 @@ module.exports = {
     },
 };
 },{}],4:[function(require,module,exports){
+module.exports = {
+    name: 'viewHealthClinics',
+    func: function ($scope, charlotteMapService) {
+
+        $scope.healthClinics = charlotteMapService.getHealthClinics();
+    }
+};
+},{}],5:[function(require,module,exports){
 module.exports = {
     name: 'viewNetwork',
     func: function ($scope, regFormService) {
