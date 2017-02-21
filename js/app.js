@@ -1,16 +1,16 @@
 const app = angular.module('NetworkApp', ['ui.router']);
 
-let joinNetwork = require('./controllers/joinNetwork');
-let viewNetwork = require('./controllers/viewNetwork');
-let charlotteMap = require('./controllers/charlotteMap');
-let viewHealthClinics = require('./controllers/viewHealthClinics');
+const joinNetwork = require('./controllers/joinNetwork');
+// const viewNetwork = require('./controllers/viewNetwork');
+const charlotteMap = require('./controllers/charlotteMap');
+// const viewHealthClinics = require('./controllers/viewHealthClinics');
 
 
 const controllers = [
     joinNetwork,
-    viewNetwork,
+    // viewNetwork,
     charlotteMap,
-    viewHealthClinics,
+    // viewHealthClinics,
 ];
 
 for (let i = 0; i < controllers.length; i++) {
@@ -19,18 +19,20 @@ for (let i = 0; i < controllers.length; i++) {
 
 //VIEWS
 app.config(function ($stateProvider) {
+
     // $stateProvider is the object we add routes ('states') to.
+    
     $stateProvider.state({
         name: 'join-network',
         url: '/joinNetwork',
         component: 'joinNetwork',
     });
 
-    $stateProvider.state({
-        name: 'view-network',
-        url: '/viewNetwork',
-        component: 'viewNetwork',
-    });
+    // $stateProvider.state({
+    //     name: 'view-network',
+    //     url: '/viewNetwork',
+    //     component: 'viewNetwork',
+    // });
 
     $stateProvider.state({
         name: 'charlotte-map',
@@ -38,11 +40,17 @@ app.config(function ($stateProvider) {
         component: 'charlotteMap',
     });
 
-    $stateProvider.state({
-        name: 'view-health',
-        url: '/viewHealthClinics',
-        component: 'viewHealthClinics',
-    });
+    // $stateProvider.state({
+    //     name: 'view-health',
+    //     url: '/viewHealthClinics',
+    //     component: 'viewHealthClinics',
+    // });
+
+    //  $stateProvider.state({
+    //     name: 'home',
+    //     url: '/home',
+    //     // component: 'home',
+    // });
 
 })
 

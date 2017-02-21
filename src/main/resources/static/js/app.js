@@ -1,17 +1,17 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 const app = angular.module('NetworkApp', ['ui.router']);
 
-let joinNetwork = require('./controllers/joinNetwork');
-let viewNetwork = require('./controllers/viewNetwork');
-let charlotteMap = require('./controllers/charlotteMap');
-let viewHealthClinics = require('./controllers/viewHealthClinics');
+const joinNetwork = require('./controllers/joinNetwork');
+// const viewNetwork = require('./controllers/viewNetwork');
+const charlotteMap = require('./controllers/charlotteMap');
+// const viewHealthClinics = require('./controllers/viewHealthClinics');
 
 
 const controllers = [
     joinNetwork,
-    viewNetwork,
+    // viewNetwork,
     charlotteMap,
-    viewHealthClinics,
+    // viewHealthClinics,
 ];
 
 for (let i = 0; i < controllers.length; i++) {
@@ -20,18 +20,20 @@ for (let i = 0; i < controllers.length; i++) {
 
 //VIEWS
 app.config(function ($stateProvider) {
+
     // $stateProvider is the object we add routes ('states') to.
+    
     $stateProvider.state({
         name: 'join-network',
         url: '/joinNetwork',
         component: 'joinNetwork',
     });
 
-    $stateProvider.state({
-        name: 'view-network',
-        url: '/viewNetwork',
-        component: 'viewNetwork',
-    });
+    // $stateProvider.state({
+    //     name: 'view-network',
+    //     url: '/viewNetwork',
+    //     component: 'viewNetwork',
+    // });
 
     $stateProvider.state({
         name: 'charlotte-map',
@@ -39,11 +41,17 @@ app.config(function ($stateProvider) {
         component: 'charlotteMap',
     });
 
-    $stateProvider.state({
-        name: 'view-health',
-        url: '/viewHealthClinics',
-        component: 'viewHealthClinics',
-    });
+    // $stateProvider.state({
+    //     name: 'view-health',
+    //     url: '/viewHealthClinics',
+    //     component: 'viewHealthClinics',
+    // });
+
+    //  $stateProvider.state({
+    //     name: 'home',
+    //     url: '/home',
+    //     // component: 'home',
+    // });
 
 })
 
@@ -80,7 +88,7 @@ for (let i = 0; i < services.length; i++) {
     app.factory(services[i].name, services[i].func);
 };
 
-},{"./controllers/charlotteMap":2,"./controllers/joinNetwork":3,"./controllers/viewHealthClinics":4,"./controllers/viewNetwork":5,"./services/charlotteMapService":6,"./services/regFormService":7}],2:[function(require,module,exports){
+},{"./controllers/charlotteMap":2,"./controllers/joinNetwork":3,"./services/charlotteMapService":4,"./services/regFormService":5}],2:[function(require,module,exports){
 module.exports = {
     name: 'charlotteMap',
     func: function ($scope, charlotteMapService) {
@@ -357,27 +365,6 @@ module.exports = {
 };
 },{}],4:[function(require,module,exports){
 module.exports = {
-    name: 'viewHealthClinics',
-    func: function ($scope, charlotteMapService) {
-
-        $scope.healthClinics = charlotteMapService.getHealthClinics();
-    }
-};
-},{}],5:[function(require,module,exports){
-module.exports = {
-    name: 'viewNetwork',
-    func: function ($scope, regFormService) {
-
-        $scope.forms = regFormService.getAll();
-    }
-};
-
-
-
-
-
-},{}],6:[function(require,module,exports){
-module.exports = {
 
     name: "charlotteMapService",
     func: function ($http) {
@@ -441,7 +428,7 @@ module.exports = {
 }
 
 
-},{}],7:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = {
     name: "regFormService",
     func: function ($http) {

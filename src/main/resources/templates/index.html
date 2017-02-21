@@ -28,7 +28,7 @@
 <body ng-app="NetworkApp">
 
     <!-- Top Bar -->
-   
+
     <section class="top-bar" id="main-menu" data-options="sticky_on: [medium,large]">
         <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu>
@@ -43,23 +43,28 @@
         </div>
     </section>
 
-    <!-- Hero Photo Header -->
+    <!Hero Photo Header -->
     <section class="hero">
         <div class="row intro">
             <div class="small-centered medium-uncentered medium-6 large-7 columns">
                 <h1>Connecting Communities</h1>
                 <p>A Refugee and Immigrant Resource Network</p>
+                <button><a ui-sref="charlotte-map">Resource Map</a></button>
             </div>
     </section>
 
     <!-- Menu Bar -->
-    <ul id="menu-bar">
-        <li class="menu-list"><a ui-sref="view-network">Network Members</a></li>
-        <li class="menu-list"><a ui-sref="charlotte-map">Resource Map</a></li>
-    </ul>
+    <!--<ul id="menu-bar">
+        <!<!<li class="menu-list"><a ui-sref="view-network">Network Members</a></li>-->
+        <!--<li class="menu-list"><a ui-sref="charlotte-map">Resource Map</a></li>
+    </ul>-->
 
-    <!-- Map and Join Menu Views -->
-    <ui-view></ui-view>
+
+    <!-- Content Views -->
+
+    <div class="container">
+        <ui-view></ui-view>
+    </div>
 
 </body>
 
