@@ -25,6 +25,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
+
         };
 
         $scope.showHealth = function () {
@@ -33,6 +34,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
+           
         };
 
         $scope.showSchoolsC = function () {
@@ -41,6 +43,7 @@ module.exports = {
             layers.schoolsC.addTo(mymap);
             layers.schoolsL.addTo(mymap);
             layers.cmLibraries.removeFrom(mymap);
+           
         };
 
         $scope.showCmLibraries = function () {
@@ -49,6 +52,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.addTo(mymap);
+           
         };
 
         $scope.showAll = function () {
@@ -57,6 +61,7 @@ module.exports = {
             layers.schoolsC.addTo(mymap);
             layers.schoolsL.addTo(mymap);
             layers.cmLibraries.addTo(mymap);
+           
         };
 
         $scope.hideAll = function () {
@@ -65,7 +70,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
-            layers.searchMarkers.addTo(mymap)
+           
         };
 
 
@@ -74,7 +79,9 @@ module.exports = {
         $scope.searchName = '';
 
         $scope.getName = function () {
+             
             charlotteMapService.getName($scope.searchName)
+            
         }
 
         //CHARLOTTE MAP
@@ -233,8 +240,7 @@ module.exports = {
         //SEARCH MARKERS
 
         $scope.getName = function () {
-            let markers6 = [];
-
+          
             charlotteMapService.getName($scope.searchName).then(function (search) {
                 let markers6 = [];
 
@@ -255,6 +261,8 @@ module.exports = {
                 layers.searchMarkers.addTo(mymap);
                 $scope.hideAll();
                 $scope.searchName = "";
+                
+                
             })
         };
 
