@@ -47,11 +47,17 @@ app.config(function ($stateProvider) {
     //     component: 'viewHealthClinics',
     // });
 
-    //  $stateProvider.state({
-    //     name: 'home',
-    //     url: '/home',
-    //     // component: 'home',
-    // });
+     $stateProvider.state({
+        name: 'home-page',
+        url: '/homePage',
+        component: 'homePage',
+    });
+
+    $stateProvider.state({
+       name: 'home',
+       url: '',
+       component: 'homePage',
+   });
 
 })
 
@@ -74,6 +80,10 @@ app.component('charlotteMap', {
 app.component('viewHealth', {
     controller: 'viewHealthClinics',
     templateUrl: 'templates/viewHealthClinics.html',
+});
+
+app.component('homePage', {
+    templateUrl: 'templates/homePage.html',
 });
 
 /* Services */

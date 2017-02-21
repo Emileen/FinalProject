@@ -1,0 +1,28 @@
+<div class="container row">
+    <div class="large-4 columns">
+        <div class="panel">
+            <h3>Resource Menu</h3>
+            <button class="btn" ng-click="showAll()">Show All</button>
+            <button class="btn" ng-click="showAgencies()">Agencies</button>
+            <button class="btn" ng-click="showHealth()">Health Clinics</button>
+            <button class="btn" ng-click="showSchoolsC()">Schools</button>
+            <button class="btn" ng-click="showCmLibraries()">Libraries</button>
+        </div>
+    </div>
+    
+    <div id="mapBox" class="large-8 columns">
+        <div id="mapid"></div>
+    </div>
+
+    <div id="tabScroll" class="large-4 columns">
+        
+        </div>
+
+    <div id="searchBox">
+        <ul class="menu">
+            <li><h3>Search</h3></li>
+            <li><input type="search" ng-model="searchName" placeholder="Location Search"></li>
+            <li><button type="button" class="button" ng-click="getName()">Search</button></li>
+        </ul>
+    </div>
+</div>
