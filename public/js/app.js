@@ -72,6 +72,7 @@ app.component('viewNetwork', {
     templateUrl: 'templates/viewNetwork.html',
 });
 
+
 app.component('charlotteMap', {
     controller: 'charlotteMap',
     templateUrl: 'templates/charlotteMap.html',
@@ -328,29 +329,37 @@ module.exports = {
             layers.cmLibraries = L.layerGroup(markers5);
             layers.cmLibraries.addTo(mymap);
 
+
         });
 
         //SEARCH MARKERS
 
-        // charlotteMapService.getName().then(function (search) {
-        //     let markers6 = [];
+        $scope.getName = function () {
+            let markers6 = [];
 
-        //     let searchIcon = L.AwesomeMarkers.icon({
-        //         icon: 'fa-star',
-        //         prefix: 'fa',
-        //         markerColor: 'orange',
-        //         iconAnchor: [12, 22],
-        //         popupAnchor: [0, -24],
-        //     });
+            charlotteMapService.getName($scope.searchName).then(function (search) {
+                let markers6 = [];
 
-        //     for (let i = 0; i < searchName.length; i++) {
-        //         let searchMarkers = new L.marker([search[i].latitude, search[i].longitude]), {icon: searchIcon}
-        //         markers6.push(searchMarkers);
-        //     };
-        //     layers.searchMarkers = L.layerGroup(markers6);
-        //     layers.searchMarkers.addTo(mymap);
-        // },
-        // )
+                let searchIcon = L.AwesomeMarkers.icon({
+                    icon: 'fa-star',
+                    prefix: 'fa',
+                    markerColor: 'orange',
+                    iconAnchor: [12, 22],
+                    popupAnchor: [0, -24],
+                });
+
+                for (let i = 0; i < search.length; i++) {
+                    let searchMarkers = new L.marker([search[i].latitude, search[i].longitude], { icon: searchIcon });
+                    markers6.push(searchMarkers);
+                }
+
+                layers.searchMarkers = L.layerGroup(markers6);
+                layers.searchMarkers.addTo(mymap);
+                $scope.hideAll();
+                $scope.searchName = "";
+            })
+        };
+
     }
 };
 
@@ -420,16 +429,16 @@ module.exports = {
             getLibraries() {
                 return $http.get('https://connectingcommunities.herokuapp.com/resource/library/').then(function (response) {
 
-                    return response.data;
+                 return response.data;
                 });
 
             },
 
             getName(searchName) {
-                $http.get('https://connectingcommunities.herokuapp.com/search/' + searchName).then(function (response) {
-                    angular.copy(response.data, searchLocations);
-                });
-                console.log(response);
+                return $http.get('https://connectingcommunities.herokuapp.com/search/' + searchName).then(function (response) {
+                    
+                return response.data;
+                });   
                
             },
 

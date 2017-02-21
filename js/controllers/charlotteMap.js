@@ -227,28 +227,36 @@ module.exports = {
             layers.cmLibraries = L.layerGroup(markers5);
             layers.cmLibraries.addTo(mymap);
 
+
         });
 
         //SEARCH MARKERS
 
-        // charlotteMapService.getName().then(function (search) {
-        //     let markers6 = [];
+        $scope.getName = function () {
+            let markers6 = [];
 
-        //     let searchIcon = L.AwesomeMarkers.icon({
-        //         icon: 'fa-star',
-        //         prefix: 'fa',
-        //         markerColor: 'orange',
-        //         iconAnchor: [12, 22],
-        //         popupAnchor: [0, -24],
-        //     });
+            charlotteMapService.getName($scope.searchName).then(function (search) {
+                let markers6 = [];
 
-        //     for (let i = 0; i < searchName.length; i++) {
-        //         let searchMarkers = new L.marker([search[i].latitude, search[i].longitude]), {icon: searchIcon}
-        //         markers6.push(searchMarkers);
-        //     };
-        //     layers.searchMarkers = L.layerGroup(markers6);
-        //     layers.searchMarkers.addTo(mymap);
-        // },
-        // )
+                let searchIcon = L.AwesomeMarkers.icon({
+                    icon: 'fa-star',
+                    prefix: 'fa',
+                    markerColor: 'orange',
+                    iconAnchor: [12, 22],
+                    popupAnchor: [0, -24],
+                });
+
+                for (let i = 0; i < search.length; i++) {
+                    let searchMarkers = new L.marker([search[i].latitude, search[i].longitude], { icon: searchIcon });
+                    markers6.push(searchMarkers);
+                }
+
+                layers.searchMarkers = L.layerGroup(markers6);
+                layers.searchMarkers.addTo(mymap);
+                $scope.hideAll();
+                $scope.searchName = "";
+            })
+        };
+
     }
 };

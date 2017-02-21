@@ -44,16 +44,16 @@ module.exports = {
             getLibraries() {
                 return $http.get('https://connectingcommunities.herokuapp.com/resource/library/').then(function (response) {
 
-                    return response.data;
+                 return response.data;
                 });
 
             },
 
             getName(searchName) {
-                $http.get('https://connectingcommunities.herokuapp.com/search/' + searchName).then(function (response) {
-                    angular.copy(response.data, searchLocations);
-                });
-                console.log(response);
+                return $http.get('https://connectingcommunities.herokuapp.com/search/' + searchName).then(function (response) {
+                    
+                return response.data;
+                });   
                
             },
 
