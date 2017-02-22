@@ -116,17 +116,17 @@ public class RefugeeAdvocacyNetworkController2 {
         // String name
         //?name=
 
-        List<Object> things = new ArrayList<>();
+        List<Object> searchObject = new ArrayList<>();
 
         List<Agency> agency = agencies.findByNameContainsIgnoreCase(name);
 
-        things.addAll(agency);
+        searchObject.addAll(agency);
 
         List<Resource> resource = resources.findByNameContainsIgnoreCase(name);
 
-        things.addAll(resource);
+        searchObject.addAll(resource);
 
-        return things;
+        return searchObject;
     }
 }
 
