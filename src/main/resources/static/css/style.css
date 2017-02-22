@@ -551,22 +551,6 @@ button:hover {
     font-weight: 400;
     text-align: center;
     margin-bottom: 2rem; }
-  .hero button {
-    color: white;
-    background-color: #6AB1B8;
-    padding: 2%;
-    font-family: 'Open Sans', sans-serif;
-    -webkit-transition-duration: 0.4s;
-    /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer; }
-  .hero button {
-    background-color: #6ab1b8;
-    color: white;
-    border: 2px solid #6AB1B8; }
-  .hero button:hover {
-    background-color: white;
-    color: #6ab1b8; }
 
 button {
   color: white;

@@ -528,67 +528,29 @@ button:hover {
   background-color: #6AB1B8;
   color: white; }
 
-section .top-bar {
-  background: #6AB1B8;
-  padding: 0rem; }
-  section .top-bar ul {
-    background: #6AB1B8;
-    text-decoration-style: none;
-    list-style-type: none; }
-    section .top-bar ul a {
-      color: white; }
-
 .hero {
   background: url("http://i68.tinypic.com/fjktnd.jpg") no-repeat center center;
   background-size: cover;
-<<<<<<< HEAD
-  height: 80vh; }
-  .hero .row {
-    padding: 10%; }
-  .hero .columns {
-    margin: 10px; }
-=======
   height: 500px; }
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
   .hero h1 {
     color: white;
     text-shadow: 2px 4px 2px darkslategray;
     font-size: 4rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Pathway Gothic One', sans-serif;
     line-height: 1em;
     letter-spacing: -0.025em;
     font-weight: 700;
     text-align: center;
     margin-top: 30px; }
   .hero p {
-    color: #6AB1B8;
-    text-shadow: 1px 1px white;
-    font-size: 1.5rem;
+    color: white;
+    font-family: 'Pathway Gothic One', sans-serif;
+    text-shadow: 1px 1px #6AB1B8;
+    font-size: 2rem;
     line-height: 1.75em;
     font-weight: 400;
     text-align: center;
     margin-bottom: 2rem; }
-<<<<<<< HEAD
-  .hero button {
-    color: white;
-    background-color: #6AB1B8;
-    padding: 2%;
-    font-family: 'Open Sans', sans-serif;
-    -webkit-transition-duration: 0.4s;
-    /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer; }
-  .hero button {
-    background-color: #6ab1b8;
-    color: white;
-    border: 2px solid #6AB1B8; }
-  .hero button:hover {
-    background-color: white;
-    color: #6ab1b8; }
-=======
-<<<<<<< HEAD
-=======
->>>>>>> dc9810467f00bfd5f6f9154497970b9c024dc493
 
 button {
   color: white;
@@ -686,7 +648,6 @@ button {
 
 input {
   padding: 2%; }
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
 
 .row {
   max-width: 75rem;
@@ -3926,15 +3887,6 @@ a.thumbnail {
   clear: both; }
 
 .top-bar {
-<<<<<<< HEAD
-  background: #6AB1B8;
-  padding: 0rem; }
-  .top-bar ul {
-    background: #6AB1B8;
-    text-decoration-style: none;
-    list-style-type: none; }
-    .top-bar ul a {
-=======
   background-color: #6AB1B8;
   padding: 0px; }
   .top-bar ul {
@@ -3943,53 +3895,18 @@ a.thumbnail {
     /* visited link */
     /* mouse over link */ }
     .top-bar ul a:link {
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
       color: white; }
+    .top-bar ul a:visited {
+      color: white; }
+    .top-bar ul a:hover {
+      color: #872714; }
+    .top-bar ul #nameLogo {
+      font-family: 'Pathway Gothic One', sans-serif;
+      font-size: 24px; }
 
-#menu-bar {
-  text-decoration-style: none;
-  list-style-type: none;
-  display: flex;
-  justify-content: space-around;
-  padding: 20px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.5em;
-  color: maroon; }
-
-li #menu-list {
-  list-style-type: none;
-  text-decoration-style: none;
-  border: darkslategray solid 1px; }
-
-<<<<<<< HEAD
-input {
-  padding: 2%; }
-
-.btn {
-  width: 25%;
-  float: left;
-  padding-right: 0.625rem;
-  padding-left: 0.625rem;
-  background-color: white;
-  border: solid black 2px; }
-  @media print, screen and (min-width: 40em) {
-    .btn {
-      padding-right: 0.9375rem;
-      padding-left: 0.9375rem; } }
-  .btn:last-child:not(:first-child) {
-    float: right; }
-
-.row {
-  max-width: 100%; }
-
-#mapid {
-  height: 500px;
-  font-family: 'Open Sans', sans-serif; }
-=======
 footer p {
   color: white;
   font-size: 10px;
   text-align: center;
   background-color: #6AB1B8;
   padding: 15px; }
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb

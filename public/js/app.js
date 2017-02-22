@@ -72,6 +72,7 @@ app.component('viewNetwork', {
     templateUrl: 'templates/viewNetwork.html',
 });
 
+
 app.component('charlotteMap', {
     controller: 'charlotteMap',
     templateUrl: 'templates/charlotteMap.html',
@@ -126,6 +127,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
+
         };
 
         $scope.showHealth = function () {
@@ -134,10 +136,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
-<<<<<<< HEAD
-=======
 
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
         };
 
         $scope.showSchoolsC = function () {
@@ -146,10 +145,7 @@ module.exports = {
             layers.schoolsC.addTo(mymap);
             layers.schoolsL.addTo(mymap);
             layers.cmLibraries.removeFrom(mymap);
-<<<<<<< HEAD
-=======
 
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
         };
 
         $scope.showCmLibraries = function () {
@@ -158,10 +154,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.addTo(mymap);
-<<<<<<< HEAD
-=======
 
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
         };
 
         $scope.showAll = function () {
@@ -170,10 +163,7 @@ module.exports = {
             layers.schoolsC.addTo(mymap);
             layers.schoolsL.addTo(mymap);
             layers.cmLibraries.addTo(mymap);
-<<<<<<< HEAD
-=======
 
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
         };
 
         $scope.hideAll = function () {
@@ -182,11 +172,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
-<<<<<<< HEAD
-            layers.searchMarkers.addTo(mymap)
-=======
 
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
         };
 
 
@@ -195,13 +181,9 @@ module.exports = {
         $scope.searchName = '';
 
         $scope.getName = function () {
-<<<<<<< HEAD
-            charlotteMapService.getName($scope.searchName)
-=======
 
             charlotteMapService.getName($scope.searchName)
 
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
         }
 
         //CHARLOTTE MAP
@@ -354,31 +336,11 @@ module.exports = {
             layers.cmLibraries = L.layerGroup(markers5);
             layers.cmLibraries.addTo(mymap);
 
+
         });
 
         //SEARCH MARKERS
 
-<<<<<<< HEAD
-        // charlotteMapService.getName().then(function (search) {
-        //     let markers6 = [];
-
-        //     let searchIcon = L.AwesomeMarkers.icon({
-        //         icon: 'fa-star',
-        //         prefix: 'fa',
-        //         markerColor: 'orange',
-        //         iconAnchor: [12, 22],
-        //         popupAnchor: [0, -24],
-        //     });
-
-        //     for (let i = 0; i < searchName.length; i++) {
-        //         let searchMarkers = new L.marker([search[i].latitude, search[i].longitude]), {icon: searchIcon}
-        //         markers6.push(searchMarkers);
-        //     };
-        //     layers.searchMarkers = L.layerGroup(markers6);
-        //     layers.searchMarkers.addTo(mymap);
-        // },
-        // )
-=======
         $scope.getName = function () {
 
             charlotteMapService.getName($scope.searchName).then(function (search) {
@@ -413,7 +375,6 @@ module.exports = {
                 })
         };
 
->>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
     }
 };
 
@@ -483,16 +444,16 @@ module.exports = {
             getLibraries() {
                 return $http.get('https://connectingcommunities.herokuapp.com/resource/library/').then(function (response) {
 
-                    return response.data;
+                 return response.data;
                 });
 
             },
 
             getName(searchName) {
-                $http.get('https://connectingcommunities.herokuapp.com/search/' + searchName).then(function (response) {
-                    angular.copy(response.data, searchLocations);
-                });
-                console.log(response);
+                return $http.get('https://connectingcommunities.herokuapp.com/search/' + searchName).then(function (response) {
+                    
+                return response.data;
+                });   
                
             },
 
