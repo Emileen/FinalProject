@@ -493,8 +493,37 @@ form {
   padding: 40px; }
 
 button {
-  background-color: lightgreen;
-  padding: 2%; }
+  width: 25%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  background-color: #6AB1B8;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 2%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer; }
+  @media print, screen and (min-width: 40em) {
+    button {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+  button:last-child:not(:first-child) {
+    float: right; }
+
+button {
+  background-color: white;
+  color: black;
+  border: 2px solid #6AB1B8; }
+
+button:hover {
+  background-color: #6AB1B8;
+  color: white; }
 
 section .top-bar {
   background: #6AB1B8;
@@ -509,11 +538,15 @@ section .top-bar {
 .hero {
   background: url("http://i68.tinypic.com/fjktnd.jpg") no-repeat center center;
   background-size: cover;
+<<<<<<< HEAD
   height: 80vh; }
   .hero .row {
     padding: 10%; }
   .hero .columns {
     margin: 10px; }
+=======
+  height: 500px; }
+>>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
   .hero h1 {
     color: white;
     text-shadow: 2px 4px 2px darkslategray;
@@ -522,7 +555,8 @@ section .top-bar {
     line-height: 1em;
     letter-spacing: -0.025em;
     font-weight: 700;
-    text-align: center; }
+    text-align: center;
+    margin-top: 30px; }
   .hero p {
     color: #6AB1B8;
     text-shadow: 1px 1px white;
@@ -531,6 +565,93 @@ section .top-bar {
     font-weight: 400;
     text-align: center;
     margin-bottom: 2rem; }
+<<<<<<< HEAD
+=======
+
+.button-group {
+  margin: 1rem 0; }
+  .button-group:before {
+    content: attr(data-grouptype);
+    z-index: 99999;
+    color: #6AB1B8;
+    font-size: 1rem;
+    padding: 0.25em;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    left: 42.5%;
+    top: 0.35rem; }
+  .button-group button + button {
+    margin-left: 5px;
+    list-style-type: none;
+    text-decoration-style: none; }
+
+#mapid {
+  height: 500px;
+  font-family: 'Open Sans', sans-serif;
+  border: 2px darkgray solid; }
+
+#map-title, #menu-title {
+  text-align: center; }
+
+.btn {
+  background-color: #6AB1B8;
+  /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  padding: 20px; }
+
+.btn {
+  background-color: white;
+  color: black;
+  border: 2px solid #6AB1B8; }
+
+.btn:hover {
+  background-color: #6AB1B8;
+  color: white; }
+
+.row {
+  max-width: 100%; }
+
+.align-v-container {
+  background: #eee !important;
+  padding: 25px 30px;
+  border: 2px solid darkgray; }
+
+.align-v-container .column:nth-of-type(1), .align-v-container .columns:nth-of-type(1) {
+  background: #34495e !important;
+  margin: 0 20px;
+  padding: 20px; }
+
+.align-v-container .column:nth-of-type(2), .align-v-container .columns:nth-of-type(2) {
+  background: #7f8c8d !important;
+  margin: 0 20px;
+  padding: 20px; }
+
+.align-v-container .column:nth-of-type(3), .align-v-container .columns:nth-of-type(3) {
+  background: #7f8c8d !important;
+  margin: 0 20px;
+  padding: 20px; }
+
+.align-v-container .column:nth-of-type(4), .align-v-container .columns:nth-of-type(4) {
+  background: #7f8c8d !important;
+  margin: 0 20px;
+  padding: 20px; }
+
+.align-v-container .column:nth-of-type(5), .align-v-container .columns:nth-of-type(5) {
+  background: #7f8c8d !important;
+  margin: 0 20px;
+  padding: 20px; }
+
+input {
+  padding: 2%; }
+>>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
 
 .row {
   max-width: 75rem;
@@ -3770,6 +3891,7 @@ a.thumbnail {
   clear: both; }
 
 .top-bar {
+<<<<<<< HEAD
   background: #6AB1B8;
   padding: 0rem; }
   .top-bar ul {
@@ -3777,6 +3899,16 @@ a.thumbnail {
     text-decoration-style: none;
     list-style-type: none; }
     .top-bar ul a {
+=======
+  background-color: #6AB1B8;
+  padding: 0px; }
+  .top-bar ul {
+    background-color: #6AB1B8;
+    /* unvisited link */
+    /* visited link */
+    /* mouse over link */ }
+    .top-bar ul a:link {
+>>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb
       color: white; }
 
 #menu-bar {
@@ -3794,6 +3926,7 @@ li #menu-list {
   text-decoration-style: none;
   border: darkslategray solid 1px; }
 
+<<<<<<< HEAD
 input {
   padding: 2%; }
 
@@ -3817,3 +3950,11 @@ input {
 #mapid {
   height: 500px;
   font-family: 'Open Sans', sans-serif; }
+=======
+footer p {
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  background-color: #6AB1B8;
+  padding: 15px; }
+>>>>>>> 5b9f338c58ba060152020d7e527caf8fb2027ceb

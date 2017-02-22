@@ -1,7 +1,7 @@
 /* Include Foundation*/
 @import '../node_modules/foundation-sites/scss/foundation'; //because its in a scss folder
 // @import 'motion-ui';
-// @import "foundation/components/top-bar";
+
 
 @include foundation-global-styles;
 // @include foundation-grid;
@@ -9,10 +9,12 @@
 // @include motion-ui-transitions;
 
 $global-flexbox: true;
-// $topbar-link-color-hover: white;
+
 
 @import 'form';
 @import 'homePage';
+@import 'map';
+
 
 @include foundation-flex-grid;
 @include foundation-flex-classes;
@@ -56,11 +58,11 @@ $global-flexbox: true;
 // Top Bar
 
 .top-bar {
-    background: #6AB1B8;
+    background-color: #6AB1B8;
     padding: 0px;
 
     ul {
-        background: #6AB1B8;
+        background-color: #6AB1B8;
         /* unvisited link */
         a:link {
             color: white;
@@ -83,27 +85,18 @@ $global-flexbox: true;
     
     }
 }
-   
-input {
-    padding: 2%;
-}
 
-
-.btn {
-    @include grid-column(3);
+footer {
+    p {
+    color: white;
+    font-size: 10px;
+    text-align: center;
     background-color: #6AB1B8;
-    border: solid black 2px;
-    
+    padding: 15px;
+    }
 }
 
-.row {
-    max-width: 100%;
-}
 
-#mapid {
-    height: 500px;
-    font-family: 'Open Sans', sans-serif;
-}
 
 
 
