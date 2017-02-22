@@ -12,7 +12,7 @@ $global-flexbox: true;
 // $topbar-link-color-hover: white;
 
 @import 'form';
-@import 'topbar';
+@import 'homePage';
 
 @include foundation-flex-grid;
 @include foundation-flex-classes;
@@ -57,42 +57,33 @@ $global-flexbox: true;
 
 .top-bar {
     background: #6AB1B8;
-    padding: 0rem;
+    padding: 0px;
 
     ul {
-      background: #6AB1B8;
-      text-decoration-style: none;
-      list-style-type: none;
-      
-      a {
-        color: white;
-      }
+        background: #6AB1B8;
+        /* unvisited link */
+        a:link {
+            color: white;
+        }
+
+        /* visited link */
+        a:visited {
+            color: white;
+        }
+
+        /* mouse over link */
+        a:hover {
+            color: #872714;
+        }
+
+        #nameLogo {
+            font-family: 'Pathway Gothic One', sans-serif;
+            font-size: 24px;
+        }
+    
     }
 }
    
-
-//navigation menu
-
- #menu-bar {
-        text-decoration-style: none;
-        list-style-type: none;
-        display: flex;
-        justify-content: space-around;
-        padding: 20px;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 1.5em;
-        color: maroon;
- }
-
-
-li #menu-list {
-        list-style-type: none;
-        text-decoration-style: none;
-        border: darkslategray solid 1px;
-    }
-    
-
-
 input {
     padding: 2%;
 }
@@ -100,7 +91,7 @@ input {
 
 .btn {
     @include grid-column(3);
-    background-color: white;
+    background-color: #6AB1B8;
     border: solid black 2px;
     
 }
@@ -113,6 +104,7 @@ input {
     height: 500px;
     font-family: 'Open Sans', sans-serif;
 }
+
 
 
 

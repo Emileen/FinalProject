@@ -1,0 +1,47 @@
+// Hero Header Image
+.hero {
+	background: url('http://i68.tinypic.com/fjktnd.jpg') no-repeat center center;
+	background-size: cover;
+	height: 500px;
+
+	.row {
+		padding: 2%;
+		margin-left: 200px;
+		// background-color: white;
+		// opacity: .05;
+	}
+
+	.columns {
+		margin: 10px;
+	}
+
+	h1 {
+		color: white;
+		text-shadow: 2px 4px 2px darkslategray;
+		font-size: 4rem;
+		font-family: 'Pathway Gothic One', sans-serif;
+		line-height: 1em;
+		letter-spacing: -0.025em;
+		font-weight: 700;
+		text-align: center;
+	}
+
+	p {
+		color: white;
+		font-family: 'Pathway Gothic One', sans-serif;
+		text-shadow: 1px 1px #6AB1B8;
+		font-size: 2rem;
+		line-height: 1.75em;
+		font-weight: 400;
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	button {
+		color: white;
+		background-color: #6AB1B8;
+		padding: 2%;
+		font-family: 'Open Sans', sans-serif;
+		margin-left: 230px;
+	}
+}

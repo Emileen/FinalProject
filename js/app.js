@@ -71,6 +71,7 @@ app.component('viewNetwork', {
     templateUrl: 'templates/viewNetwork.html',
 });
 
+
 app.component('charlotteMap', {
     controller: 'charlotteMap',
     templateUrl: 'templates/charlotteMap.html',

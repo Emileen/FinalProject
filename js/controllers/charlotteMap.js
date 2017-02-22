@@ -25,6 +25,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
+
         };
 
         $scope.showHealth = function () {
@@ -33,6 +34,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
+           
         };
 
         $scope.showSchoolsC = function () {
@@ -41,6 +43,7 @@ module.exports = {
             layers.schoolsC.addTo(mymap);
             layers.schoolsL.addTo(mymap);
             layers.cmLibraries.removeFrom(mymap);
+           
         };
 
         $scope.showCmLibraries = function () {
@@ -49,6 +52,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.addTo(mymap);
+           
         };
 
         $scope.showAll = function () {
@@ -57,6 +61,7 @@ module.exports = {
             layers.schoolsC.addTo(mymap);
             layers.schoolsL.addTo(mymap);
             layers.cmLibraries.addTo(mymap);
+           
         };
 
         $scope.hideAll = function () {
@@ -65,7 +70,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
-            layers.searchMarkers.addTo(mymap)
+           
         };
 
 
@@ -74,7 +79,9 @@ module.exports = {
         $scope.searchName = '';
 
         $scope.getName = function () {
+             
             charlotteMapService.getName($scope.searchName)
+            
         }
 
         //CHARLOTTE MAP
@@ -227,28 +234,37 @@ module.exports = {
             layers.cmLibraries = L.layerGroup(markers5);
             layers.cmLibraries.addTo(mymap);
 
+
         });
 
         //SEARCH MARKERS
 
-        // charlotteMapService.getName().then(function (search) {
-        //     let markers6 = [];
+        $scope.getName = function () {
+          
+            charlotteMapService.getName($scope.searchName).then(function (search) {
+                let markers6 = [];
 
-        //     let searchIcon = L.AwesomeMarkers.icon({
-        //         icon: 'fa-star',
-        //         prefix: 'fa',
-        //         markerColor: 'orange',
-        //         iconAnchor: [12, 22],
-        //         popupAnchor: [0, -24],
-        //     });
+                let searchIcon = L.AwesomeMarkers.icon({
+                    icon: 'fa-star',
+                    prefix: 'fa',
+                    markerColor: 'orange',
+                    iconAnchor: [12, 22],
+                    popupAnchor: [0, -24],
+                });
 
-        //     for (let i = 0; i < searchName.length; i++) {
-        //         let searchMarkers = new L.marker([search[i].latitude, search[i].longitude]), {icon: searchIcon}
-        //         markers6.push(searchMarkers);
-        //     };
-        //     layers.searchMarkers = L.layerGroup(markers6);
-        //     layers.searchMarkers.addTo(mymap);
-        // },
-        // )
+                for (let i = 0; i < search.length; i++) {
+                    let searchMarkers = new L.marker([search[i].latitude, search[i].longitude], { icon: searchIcon });
+                    markers6.push(searchMarkers);
+                }
+
+                layers.searchMarkers = L.layerGroup(markers6);
+                layers.searchMarkers.addTo(mymap);
+                $scope.hideAll();
+                $scope.searchName = "";
+                
+                
+            })
+        };
+
     }
 };

@@ -496,41 +496,39 @@ button {
   background-color: lightgreen;
   padding: 2%; }
 
-section .top-bar {
-  background: #6AB1B8;
-  padding: 0rem; }
-  section .top-bar ul {
-    background: #6AB1B8;
-    text-decoration-style: none;
-    list-style-type: none; }
-    section .top-bar ul a {
-      color: white; }
-
 .hero {
   background: url("http://i68.tinypic.com/fjktnd.jpg") no-repeat center center;
   background-size: cover;
-  height: 80vh; }
+  height: 500px; }
   .hero .row {
-    padding: 10%; }
+    padding: 2%;
+    margin-left: 200px; }
   .hero .columns {
     margin: 10px; }
   .hero h1 {
     color: white;
     text-shadow: 2px 4px 2px darkslategray;
     font-size: 4rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Pathway Gothic One', sans-serif;
     line-height: 1em;
     letter-spacing: -0.025em;
     font-weight: 700;
     text-align: center; }
   .hero p {
-    color: #6AB1B8;
-    text-shadow: 1px 1px white;
-    font-size: 1.5rem;
+    color: white;
+    font-family: 'Pathway Gothic One', sans-serif;
+    text-shadow: 1px 1px #6AB1B8;
+    font-size: 2rem;
     line-height: 1.75em;
     font-weight: 400;
     text-align: center;
     margin-bottom: 2rem; }
+  .hero button {
+    color: white;
+    background-color: #6AB1B8;
+    padding: 2%;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 230px; }
 
 .row {
   max-width: 75rem;
@@ -3771,28 +3769,21 @@ a.thumbnail {
 
 .top-bar {
   background: #6AB1B8;
-  padding: 0rem; }
+  padding: 0px; }
   .top-bar ul {
     background: #6AB1B8;
-    text-decoration-style: none;
-    list-style-type: none; }
-    .top-bar ul a {
+    /* unvisited link */
+    /* visited link */
+    /* mouse over link */ }
+    .top-bar ul a:link {
       color: white; }
-
-#menu-bar {
-  text-decoration-style: none;
-  list-style-type: none;
-  display: flex;
-  justify-content: space-around;
-  padding: 20px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.5em;
-  color: maroon; }
-
-li #menu-list {
-  list-style-type: none;
-  text-decoration-style: none;
-  border: darkslategray solid 1px; }
+    .top-bar ul a:visited {
+      color: white; }
+    .top-bar ul a:hover {
+      color: #872714; }
+    .top-bar ul #nameLogo {
+      font-family: 'Pathway Gothic One', sans-serif;
+      font-size: 24px; }
 
 input {
   padding: 2%; }
@@ -3802,7 +3793,7 @@ input {
   float: left;
   padding-right: 0.625rem;
   padding-left: 0.625rem;
-  background-color: white;
+  background-color: #6AB1B8;
   border: solid black 2px; }
   @media print, screen and (min-width: 40em) {
     .btn {
