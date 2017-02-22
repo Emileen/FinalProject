@@ -1,8 +1,14 @@
 //form
+.formContainer {
+    background-color: darkgray;
+    padding: 20px;
+
+}
+
 form {
     background-color: white;
     border: darkgray solid 2px;
-    width: 80%;
+    width: 100%;
     padding: 40px;
 }
 

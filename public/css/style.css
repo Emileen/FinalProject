@@ -486,10 +486,14 @@ button {
 .is-hidden {
   display: none !important; }
 
+.formContainer {
+  background-color: darkgray;
+  padding: 20px; }
+
 form {
   background-color: white;
   border: darkgray solid 2px;
-  width: 80%;
+  width: 100%;
   padding: 40px; }
 
 h2 {
@@ -546,37 +550,37 @@ button:hover {
     color: white;
     font-family: 'Pathway Gothic One', sans-serif;
     text-shadow: 1px 1px #6AB1B8;
-    font-size: 2rem;
+    font-size: 1.7rem;
     line-height: 1.75em;
     font-weight: 400;
     text-align: center;
     margin-bottom: 2rem; }
-
-button {
-  color: white;
-  background-color: #6AB1B8;
-  padding: 2%;
-  font-family: 'Open Sans', sans-serif;
-  -webkit-transition-duration: 0.4s;
-  /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer; }
-
-button {
-  background-color: #6ab1b8;
-  color: white;
-  border: 2px solid #6AB1B8; }
-
-button:hover {
-  background-color: white;
-  color: #6ab1b8; }
+  .hero button {
+    color: white;
+    background-color: #6AB1B8;
+    margin-left: 35%;
+    margin-right: 35%;
+    width: 30%;
+    padding: 2%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 21px;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer; }
+  .hero button {
+    background-color: #6ab1b8;
+    color: white; }
+  .hero button:hover {
+    background-color: white;
+    color: #6ab1b8; }
 
 #mapid {
   height: 500px;
   font-family: 'Open Sans', sans-serif;
   border: 2px darkgray solid; }
 
-#map-title, #menu-title {
+#map-title {
   text-align: center;
   color: white; }
 
@@ -645,6 +649,10 @@ button {
   background: #7f8c8d !important;
   margin: 0 20px;
   padding: 10px; }
+
+.search-row {
+  display: flex;
+  justify-content: space-around; }
 
 input {
   padding: 2%; }
@@ -3908,5 +3916,8 @@ footer p {
   color: white;
   font-size: 10px;
   text-align: center;
-  background-color: #6AB1B8;
+  background-color: #686D6E;
   padding: 15px; }
+
+footer a {
+  color: white; }

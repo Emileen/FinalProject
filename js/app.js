@@ -1,16 +1,15 @@
 const app = angular.module('NetworkApp', ['ui.router']);
 
 const joinNetwork = require('./controllers/joinNetwork');
-// const viewNetwork = require('./controllers/viewNetwork');
 const charlotteMap = require('./controllers/charlotteMap');
-// const viewHealthClinics = require('./controllers/viewHealthClinics');
+// const viewNetwork = require('./controllers/viewNetwork');
+
 
 
 const controllers = [
     joinNetwork,
-    // viewNetwork,
     charlotteMap,
-    // viewHealthClinics,
+    // viewNetwork,
 ];
 
 for (let i = 0; i < controllers.length; i++) {
@@ -20,12 +19,30 @@ for (let i = 0; i < controllers.length; i++) {
 //VIEWS
 app.config(function ($stateProvider) {
 
-    // $stateProvider is the object we add routes ('states') to.
-    
+// $stateProvider is the object we add routes ('states') to.
+
     $stateProvider.state({
         name: 'join-network',
         url: '/joinNetwork',
         component: 'joinNetwork',
+    });
+
+    $stateProvider.state({
+        name: 'charlotte-map',
+        url: '/charlotteMap',
+        component: 'charlotteMap',
+    });
+
+    $stateProvider.state({
+        name: 'home-page',
+        url: '/homePage',
+        component: 'homePage',
+    });
+
+    $stateProvider.state({
+        name: 'home',
+        url: '',
+        component: 'homePage',
     });
 
     // $stateProvider.state({
@@ -34,33 +51,9 @@ app.config(function ($stateProvider) {
     //     component: 'viewNetwork',
     // });
 
-    $stateProvider.state({
-        name: 'charlotte-map',
-        url: '/charlotteMap',
-        component: 'charlotteMap',
-    });
+});
 
-    // $stateProvider.state({
-    //     name: 'view-health',
-    //     url: '/viewHealthClinics',
-    //     component: 'viewHealthClinics',
-    // });
-
-     $stateProvider.state({
-        name: 'home-page',
-        url: '/homePage',
-        component: 'homePage',
-    });
-
-    $stateProvider.state({
-       name: 'home',
-       url: '',
-       component: 'homePage',
-   });
-
-})
-
-/* Defining a component */
+//COMPONENTS 
 app.component('joinNetwork', {
     controller: 'joinNetwork',
     templateUrl: 'templates/joinNetwork.html',
@@ -70,7 +63,6 @@ app.component('viewNetwork', {
     controller: 'viewNetwork',
     templateUrl: 'templates/viewNetwork.html',
 });
-
 
 app.component('charlotteMap', {
     controller: 'charlotteMap',
@@ -86,14 +78,12 @@ app.component('homePage', {
     templateUrl: 'templates/homePage.html',
 });
 
-/* Services */
-
+//SERVICES
 const services = [
     require('./services/regFormService'),
     require('./services/charlotteMapService'),
 ];
 
 for (let i = 0; i < services.length; i++) {
-    console.log(services[i].name)
     app.factory(services[i].name, services[i].func);
 };

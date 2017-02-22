@@ -1,22 +1,18 @@
-<!--<div class="row">
-    <!<div id="map-title" class="small-12 medium-10 large-10 columns">
-        <h3>Charlotte-Mecklenburg Resources Map</h3>
-    </div>-->
-<!--</div>-->
-<div class="map-container">
+<!-- MAP CONTAINER -->
+<section class="map-container">
     <div id="map-title" class="small-12 medium-10 large-10 columns">
         <h3>Charlotte-Mecklenburg Resources Map</h3>
     </div>
-     <!-- Map -->
+
+    <!-- MAP -->
     <div class="row">
         <div id="mapBox" class="small-12 large-9 columns">
             <div id="mapid"></div>
         </div>
 
-        <!-- Map Panel -->
-
-        <div class="row align-bottom align-v-container small-12 large-3 columns">
-            <div class="column">
+        <!-- MAP PANEL -->
+        <div class="row align-bottom align-v-container small-12 medium-12 large-3 columns">
+            <div class="column search-row">
                 <div><input type="search" ng-model="searchName" placeholder="Search"></div>
                 <div><button type="button" ng-click="getName()">FIND</button></div>
             </div>
@@ -26,4 +22,4 @@
             <div class="column"><button ng-click="showCmLibraries()">Libraries</button></div>
         </div>
     </div>
-</div>
+</section>

@@ -6,7 +6,7 @@
     border: 2px darkgray solid;
 }
 
-#map-title, #menu-title {
+#map-title, {
     text-align: center;
     color: white;
 }
@@ -90,6 +90,11 @@ button {
     margin: 0 20px;
     padding: 10px;
 }
+
+ .search-row {
+        display: flex;
+        justify-content: space-around;
+    }
 
 input {
     padding: 2%;

@@ -1,21 +1,12 @@
 /* Include Foundation*/
 @import '../node_modules/foundation-sites/scss/foundation'; //because its in a scss folder
-// @import "foundation/components/button-groups";
-// @import 'motion-ui';
-
-
 @include foundation-global-styles;
-// @include foundation-grid;
-
-// @include motion-ui-transitions;
 
 $global-flexbox: true;
-
 
 @import 'form';
 @import 'homePage';
 @import 'map';
-
 
 @include foundation-flex-grid;
 @include foundation-flex-classes;
@@ -56,7 +47,6 @@ $global-flexbox: true;
 @include foundation-visibility-classes;
 @include foundation-float-classes;
 
-
 // Top Bar
 
 .top-bar {
@@ -93,8 +83,12 @@ footer {
     color: white;
     font-size: 10px;
     text-align: center;
-    background-color: #6AB1B8;
+    background-color: #686D6E;
     padding: 15px;
+    }
+
+    a {
+        color: white;
     }
 }
 
