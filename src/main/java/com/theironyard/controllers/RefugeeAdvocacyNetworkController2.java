@@ -76,11 +76,31 @@ public class RefugeeAdvocacyNetworkController2 {
 
 
     // registers new agencies
-    @CrossOrigin
+   @CrossOrigin
     @RequestMapping(path = "/registration", method = RequestMethod.POST)
     public Agency registerAgency(@RequestBody Agency postData) { //standard submisson will work the other way
         postData.setLatLongValues();
         return agencies.save(postData);// give me the request body and turn it into a agency body
+    }
+
+   //based on the button the register picks save the document to the appropriate database
+    @CrossOrigin
+    @RequestMapping(path = "/updateRegistration", method = RequestMethod.POST)
+    public String registerAgency(String category, String name, String address, String phone, String contactPerson, String email,String website) { //standard submisson will work the other way
+        if (category.equalsIgnoreCase("agency")){
+            Agency agency = new Agency(name,address ,phone,contactPerson,email,website);
+            agency.setLatLongValues();
+            agencies.save(agency);
+        }else {
+            //have to assign a resource category along with saving the new registration to the database
+            Resource resource = new Resource(name,address,phone, contactPerson,address,email,website);
+            resource.setLatLongValues();
+            resource.setCategory(category);
+            resources.save(resource);
+        }
+        //postData.setLatLongValues();
+        //return agencies.save(postData);// give me the request body and turn it into a agency body
+        return "redirect:/";
     }
 
     //depending on what category that is selected by the visitor to the website, find all the information and display it
@@ -115,15 +135,12 @@ public class RefugeeAdvocacyNetworkController2 {
     public Object selection(@PathVariable String name){ // creates and abstract object
         // String name
         //?name=
-
         List<Object> searchObject = new ArrayList<>();
 
         List<Agency> agency = agencies.findByNameContainsIgnoreCase(name);
-
         searchObject.addAll(agency);
 
         List<Resource> resource = resources.findByNameContainsIgnoreCase(name);
-
         searchObject.addAll(resource);
 
         return searchObject;
