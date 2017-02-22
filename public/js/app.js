@@ -241,7 +241,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<img src="img/AGENCIES (3).png"></img>' + '<p><a href="' + healthClinics[i].website + '">' + healthClinics[i].name + '</a><p>' + '<br>' + healthClinics[i].address + '<br>' + healthClinics[i].contactNumber);
+                }).setContent('<img src="img/AGENCIES (3).png"></img>' + '<p><a href="' + healthClinics[i].website + '">' + healthClinics[i].name + '</a><p>' + '<br>' + healthClinics[i].address + '<br>' + '<a href="tel:' + healthClinics[i].contactNumber + '">' + healthClinics[i].contactNumber + '</a>');
 
                 health.bindPopup(popup);
                 markers2.push(health);
@@ -269,7 +269,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<img src="img/SCHOOLC.png"></img>' + '<p>' + cisSchools[i].name + '</p><br>' + cisSchools[i].address + '<br>' + cisSchools[i].contactNumber);
+                }).setContent('<img src="img/SCHOOLC.png"></img>' + '<p>' + cisSchools[i].name + '</p><br>' + cisSchools[i].address + '<br>' + '<a href="tel:' + cisSchools[i].contactNumber + '">' + cisSchools[i].contactNumber + '</a>');
 
                 schoolsC.bindPopup(popup);
                 markers3.push(schoolsC);
@@ -298,7 +298,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<img src="img/schoolL.png"></img>' + '<p>' + languageImmersionSchools[i].name + '</p><br>' + languageImmersionSchools[i].address + '<br>' + languageImmersionSchools[i].contactNumber);
+                }).setContent('<img src="img/schoolL.png"></img>' + '<p>' + languageImmersionSchools[i].name + '</p><br>' + languageImmersionSchools[i].address + '<br>' + '<a href="tel:' + languageImmersionSchools[i].contactNumber + '">' + languageImmersionSchools[i].contactNumber + '</a>');
 
                 schoolsL.bindPopup(popup);
                 markers4.push(schoolsL);
@@ -328,7 +328,7 @@ module.exports = {
                 // console.log(libraries[1].website)
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<img src="img/library.png"></img>' + '<p><a href="' + libraries[i].website + '">' + libraries[i].name + '</a></p><br>' + libraries[i].address + '<br>' + libraries[i].contactNumber);
+                }).setContent('<img src="img/library.png"></img>' + '<p><a href="' + libraries[i].website + '">' + libraries[i].name + '</a></p><br>' + libraries[i].address + '<br>' + '<a href="tel:' + libraries[i].contactNumber + '">' + libraries[i].contactNumber + '</a>');
 
                 cmLibraries.bindPopup(popup);
                 markers5.push(cmLibraries);
@@ -383,27 +383,30 @@ module.exports = {
     name: 'joinNetwork',
     func: function ($scope, regFormService) {
         $scope.registration = {
-           name: '',
-           address: '',
-           phoneNumber: '',
-           contactPerson: '',
-           email: '',
-           website: '',
-           category: '',   
+            name: '',
+            address: '',
+            phoneNumber: '',
+            contactPerson: '',
+            email: '',
+            website: '',
+            category: '',
         };
 
-        $scope.submitRegistration = function() {
+        $scope.submitRegistration = function () {
             regFormService.add($scope.registration)
+
+
+            $scope.registration = {
+                name: '',
+                address: '',
+                phoneNumber: '',
+                contactPerson: '',
+                email: '',
+                website: '',
+                category: '',
+            };
         }
 
-        $scope.name = '';
-        $scope.address = '';
-        $scope.phoneNumber = '';
-        $scope.contactPerson = '';
-        $scope.email = '';
-        $scope.website = '';
-        $scope.category = '';
-       
     },
 };
 },{}],4:[function(require,module,exports){
