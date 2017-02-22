@@ -13,7 +13,9 @@ module.exports = {
                     email: registration.email,
                     contactPerson: registration.contactPerson,
                     website: registration.website,
+                    category: registration.category,
                 });
+                
                 console.log(registration);
             },
 

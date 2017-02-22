@@ -388,12 +388,21 @@ module.exports = {
            phoneNumber: '',
            contactPerson: '',
            email: '',
-           website: '',   
+           website: '',
+           category: '',   
         };
 
         $scope.submitRegistration = function() {
             regFormService.add($scope.registration)
         }
+
+        $scope.name = '';
+        $scope.address = '';
+        $scope.phoneNumber = '';
+        $scope.contactPerson = '';
+        $scope.email = '';
+        $scope.website = '';
+        $scope.category = '';
        
     },
 };
@@ -478,7 +487,9 @@ module.exports = {
                     email: registration.email,
                     contactPerson: registration.contactPerson,
                     website: registration.website,
+                    category: registration.category,
                 });
+                
                 console.log(registration);
             },
 
