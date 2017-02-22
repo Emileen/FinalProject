@@ -1,7 +1,7 @@
 README
 =============
 
-## CONNECTING COMMUNITIES: A REFUGEE AND IMMIGRANT RESOURCE NETWORK
+### CONNECTING COMMUNITIES: A REFUGEE AND IMMIGRANT RESOURCE NETWORK
 > This is a Demo Day final project built by Louise Clark (frontend) and Emileen Marianayagam (backend).
 
 ## PROJECT DESCRIPTION
@@ -13,16 +13,16 @@ README
 > * search bar feature that populates markers from our databse that is related to the search input.
 
 ## FUTURE PLANS
-> We want to further develop the map feature - accordian controller feature perhaps to display all agencies? 
-> Login for agency users
-> Calendar feature for agency users to share meetings, events, fundraisers
-> Social Interaction Feature:  place for refugees and immigrants themselves to discuss personal recommendations
+> * We want to further develop the map feature - accordian controller feature perhaps to display all agencies? 
+> * Login for agency users
+> * Calendar feature for agency users to share meetings, events, fundraisers
+> * Social Interaction Feature:  place for refugees and immigrants themselves to discuss personal recommendations
 
 ## FRONTEND DEVELOPMENT
 >
 > > Languages: HTML, CSS, Javascript
 > > Tools: Angular, Sass, Foundation 6, Gulp, LeafletJS, MapBoxJS
->
+
 ## BACKEND DEVELOPMENT
 >
 > > Languages:  Java
