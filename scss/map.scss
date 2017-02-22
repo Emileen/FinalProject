@@ -1,0 +1,83 @@
+
+
+#mapid {
+    height: 500px;
+    font-family: 'Open Sans', sans-serif;
+    border: 2px darkgray solid;
+}
+
+#map-title, #menu-title {
+    text-align: center;
+}
+
+.btn {
+    // @include grid-column(3);
+    background-color: #6AB1B8; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 20px;
+    
+}
+
+.btn {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #6AB1B8;
+}
+
+.btn:hover {
+    background-color: #6AB1B8;
+    color: white;
+}
+
+.row {
+    max-width: 100%;
+}
+
+// menu .align-v-container
+
+//great blog post helped me w/vertical alignment w/flex-grid http://codepen.io/SitePoint/pen/WrgdvY/
+.align-v-container {
+    background: #eee!important;
+    padding: 25px 30px;
+    border: 2px solid darkgray;
+}
+
+.align-v-container .column:nth-of-type(1) {
+    background: #34495e!important;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+.align-v-container .column:nth-of-type(2) {
+    background: #7f8c8d!important;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+.align-v-container .column:nth-of-type(3) {
+    background: #7f8c8d!important;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+.align-v-container .column:nth-of-type(4) {
+    background: #7f8c8d!important;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+.align-v-container .column:nth-of-type(5) {
+    background: #7f8c8d!important;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+input {
+    padding: 2%;
+}
