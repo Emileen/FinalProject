@@ -46,8 +46,6 @@ public class Agency {
     @Column
     double longitude;
 
-
-
     @OneToOne // there is a one to one relationship between user and agency
     User user;
 
@@ -58,29 +56,6 @@ public class Agency {
     public Agency(String column, String s, String column1, String s1, String column2) {
     }
 
-    public Agency(int id, String name, String address, String phoneNumber, String contactPerson, String email, String website) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.contactPerson = contactPerson;
-        this.email = email;
-        this.website = website;
-       // setLatLongValues();
-    }
-
-    public Agency(String name, String address, String phoneNumber, String contactPerson, String email, String website, double latitude, double longitude) {
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.contactPerson = contactPerson;
-        this.email = email;
-        this.website = website;
-        this.latitude = latitude;
-        this.longitude = longitude;
-       // setLatLongValues();
-    }
-
     public Agency(String name, String address, String phoneNumber, String contactPerson, String email, String website) {
         this.name = name;
         this.address = address;
@@ -88,7 +63,7 @@ public class Agency {
         this.contactPerson = contactPerson;
         this.email = email;
         this.website = website;
-        //
+
     }
 
     public int getId() {
@@ -116,6 +91,8 @@ public class Agency {
         //setLatLongValues();
     }
 
+    //process of pulling the resttemplate and passing the address
+    //generating lat and lng for the the agencies
     @JsonIgnore
     public void setLatLongValues() {
         Map<String, String> urlParms = new HashMap<>();
