@@ -27,50 +27,73 @@
 		margin-bottom: 2rem;
 	}
 
-}
+	button {
+		color: white;
+		background-color: #6AB1B8;
+		padding: 2%;
+		font-family: 'Open Sans', sans-serif;
+		// margin-left: 230px;
+		-webkit-transition-duration: 0.4s; /* Safari */
+    	transition-duration: 0.4s;
+    	cursor: pointer;
+	}
 
-.button-group {
-  	margin: 1rem 0;
+	button {
+    	background-color: #6ab1b8; 
+    	color: white; 
+    	border: 2px solid #6AB1B8;
+	}
+
+	button:hover {
+    	background-color: white;
+    	color: #6ab1b8;
+	}
+}
+// Zurb Button Option Group tutorial http://zurb.com/building-blocks/button-option-group
+
+// .button-group {
+// 	position: relative;
+//   	display: flex;
+//   	margin: 1rem 0;
 	
-  		&:before {
-    		content: attr(data-grouptype);
-    		z-index: 99999;
-    		color: #6AB1B8;
-    		// display: block;
-    		font-size: 1rem;
-    		padding: 0.25em;
-    		border-radius: 50%;
-    		background: #fff;
-    		position: absolute;
-    		left: 42.5%;
-    		top: 0.35rem;
-  }
-  
-  button + button {
-    margin-left: 5px;
-	list-style-type: none;
-	text-decoration-style: none;
-  }
+//   		&:before {
+//     		content: attr(data-grouptype);
+//     		z-index: 99999;
+//     		color: #6AB1B8;
+//     		display: flex;
+//     		font-size: 1rem;
+//     		padding: 0.25em;
+//     		border-radius: 50%;
+//     		background: #fff;
+//     		position: absolute;
+//     		left: 42.5%;
+//     		top: 0.35rem;
+//   }
+//   button + button {
+//     margin-left: 5px;
+//   }
+// }
 
-	// button {
-	// 	color: white;
-	// 	background-color: #6AB1B8;
-	// 	padding: 2%;
-	// 	font-family: 'Open Sans', sans-serif;
-	// 	// margin-left: 230px;
-	// 	-webkit-transition-duration: 0.4s; /* Safari */
-    // 	transition-duration: 0.4s;
-    // 	cursor: pointer;
-	// }
 
-	// button {
-    // 	background-color: #6ab1b8; 
-    // 	color: white; 
-    // 	border: 2px solid #6AB1B8;
-	// }
 
-	// button:hover {
-    // 	background-color: white;
-    // 	color: #6ab1b8;
-	// }
-}
+	button {
+		color: white;
+		background-color: #6AB1B8;
+		padding: 2%;
+		font-family: 'Open Sans', sans-serif;
+		// margin-left: 230px;
+		-webkit-transition-duration: 0.4s; /* Safari */
+    	transition-duration: 0.4s;
+    	cursor: pointer;
+	}
+
+	button {
+    	background-color: #6ab1b8; 
+    	color: white; 
+    	border: 2px solid #6AB1B8;
+	}
+
+	button:hover {
+    	background-color: white;
+    	color: #6ab1b8;
+	}

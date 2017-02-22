@@ -6,6 +6,10 @@ form {
     padding: 40px;
 }
 
+h2 {
+    text-align: center;
+}
+
 button {
     @include grid-column(3);
     background-color: #6AB1B8; /* Green */

@@ -492,6 +492,9 @@ form {
   width: 80%;
   padding: 40px; }
 
+h2 {
+  text-align: center; }
+
 button {
   width: 25%;
   float: left;
@@ -548,24 +551,41 @@ button:hover {
     font-weight: 400;
     text-align: center;
     margin-bottom: 2rem; }
+  .hero button {
+    color: white;
+    background-color: #6AB1B8;
+    padding: 2%;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer; }
+  .hero button {
+    background-color: #6ab1b8;
+    color: white;
+    border: 2px solid #6AB1B8; }
+  .hero button:hover {
+    background-color: white;
+    color: #6ab1b8; }
 
-.button-group {
-  margin: 1rem 0; }
-  .button-group:before {
-    content: attr(data-grouptype);
-    z-index: 99999;
-    color: #6AB1B8;
-    font-size: 1rem;
-    padding: 0.25em;
-    border-radius: 50%;
-    background: #fff;
-    position: absolute;
-    left: 42.5%;
-    top: 0.35rem; }
-  .button-group button + button {
-    margin-left: 5px;
-    list-style-type: none;
-    text-decoration-style: none; }
+button {
+  color: white;
+  background-color: #6AB1B8;
+  padding: 2%;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer; }
+
+button {
+  background-color: #6ab1b8;
+  color: white;
+  border: 2px solid #6AB1B8; }
+
+button:hover {
+  background-color: white;
+  color: #6ab1b8; }
 
 #mapid {
   height: 500px;
@@ -573,7 +593,12 @@ button:hover {
   border: 2px darkgray solid; }
 
 #map-title, #menu-title {
-  text-align: center; }
+  text-align: center;
+  color: white; }
+
+button {
+  width: 100%;
+  padding: 10px; }
 
 .btn {
   background-color: #6AB1B8;
@@ -586,19 +611,26 @@ button:hover {
   /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
-  padding: 20px; }
+  padding: 20px;
+  width: 100%; }
 
 .btn {
   background-color: white;
   color: black;
-  border: 2px solid #6AB1B8; }
+  border: 2px solid #6AB1B8;
+  width: 100%; }
 
 .btn:hover {
   background-color: #6AB1B8;
-  color: white; }
+  color: white;
+  width: 100%; }
 
 .row {
   max-width: 100%; }
+
+.map-container {
+  background-color: #34495e;
+  padding: 25px 30px; }
 
 .align-v-container {
   background: #eee !important;
@@ -608,27 +640,27 @@ button:hover {
 .align-v-container .column:nth-of-type(1), .align-v-container .columns:nth-of-type(1) {
   background: #34495e !important;
   margin: 0 20px;
-  padding: 20px; }
+  padding: 10px; }
 
 .align-v-container .column:nth-of-type(2), .align-v-container .columns:nth-of-type(2) {
   background: #7f8c8d !important;
   margin: 0 20px;
-  padding: 20px; }
+  padding: 10px; }
 
 .align-v-container .column:nth-of-type(3), .align-v-container .columns:nth-of-type(3) {
   background: #7f8c8d !important;
   margin: 0 20px;
-  padding: 20px; }
+  padding: 10px; }
 
 .align-v-container .column:nth-of-type(4), .align-v-container .columns:nth-of-type(4) {
   background: #7f8c8d !important;
   margin: 0 20px;
-  padding: 20px; }
+  padding: 10px; }
 
 .align-v-container .column:nth-of-type(5), .align-v-container .columns:nth-of-type(5) {
   background: #7f8c8d !important;
   margin: 0 20px;
-  padding: 20px; }
+  padding: 10px; }
 
 input {
   padding: 2%; }

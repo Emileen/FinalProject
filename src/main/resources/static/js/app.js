@@ -214,7 +214,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 100,
-                }).setContent('<img src="img/AGENCIES (2).png"></img>' + '<br>' + '<p><a href="' + agencies[i].website + '">' + agencies[i].name + '</a></p>' + '<br>' + agencies[i].address + '<br>' + agencies[i].phoneNumber);
+                }).setContent('<img src="img/AGENCIES (2).png"></img>' + '<br>' + '<p><a href="' + agencies[i].website + '">' + agencies[i].name + '</a></p>' + '<br>' + agencies[i].address + '<br>' + '<a href="tel:' + agencies[i].phoneNumber + '">' + agencies[i].phoneNumber + '</a>');
 
                 agency.bindPopup(popup);
                 markers.push(agency);
