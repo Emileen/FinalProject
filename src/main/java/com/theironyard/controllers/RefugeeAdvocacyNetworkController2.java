@@ -85,7 +85,7 @@ public class RefugeeAdvocacyNetworkController2 {
 
    //based on the button the register picks save the document to the appropriate database
     @CrossOrigin
-    @RequestMapping(path = "/updateRegistration", method = RequestMethod.POST)
+    @RequestMapping(path = "/registerAll", method = RequestMethod.POST)
     public String registerAgency(String category, String name, String address, String phone, String contactPerson, String email,String website) { //standard submisson will work the other way
         if (category.equalsIgnoreCase("agency")){
             Agency agency = new Agency(name,address ,phone,contactPerson,email,website);
@@ -125,7 +125,6 @@ public class RefugeeAdvocacyNetworkController2 {
         }
         return resourceList;
     }
-
 
     //get the name of the agency/ resource from the front end
     //go into the database and pull out that one agency out and return that to the front end for display

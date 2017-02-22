@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by emileenmarianayagam on 2/7/17.
  */
 @Entity
-@Table (name = "resources")
+@Table(name = "resources")
 public class Resource {
 
     @Id
@@ -21,15 +21,14 @@ public class Resource {
     @Column(nullable = false)
     String name;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     String address;
 
     @Column
     String contactNumber;
 
 
-
-    @Column (nullable = false)
+    @Column(nullable = false)
     String category;
 
     @Column
@@ -48,36 +47,9 @@ public class Resource {
     double longitude;
 
 
-
     public Resource() {
     }
 
-    public Resource(int id, String name, String address, String contactNumber, String category) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.contactNumber = contactNumber;
-        this.category = category;
-        setLatLongValues();
-    }
-
-    public Resource(String name, String address, String contactNumber, String category) {
-        this.name = name;
-        this.address = address;
-        this.contactNumber = contactNumber;
-        this.category = category;
-        setLatLongValues();
-    }
-
-    public Resource(String name, String address, String contactNumber, String category, double latitude, double longitude) {
-        this.name = name;
-        this.address = address;
-        this.contactNumber = contactNumber;
-        this.category = category;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        setLatLongValues();
-    }
 
     public Resource(String name, String address, String contactNumber, String category, String website, String photo) {
         this.name = name;
@@ -86,7 +58,6 @@ public class Resource {
         this.category = category;
         this.website = website;
         this.photo = photo;
-        //setLatLongValues();
     }
 
     public Resource(String name, String address, String contactNumber, String category, String website, String email, String photo) {
@@ -133,8 +104,8 @@ public class Resource {
         if (thislocation.getResults().size() >= 1) { // if the address exists then register
             this.latitude = thislocation.getResults().get(0).getGeometry().getLocation().getLat();
             this.longitude = thislocation.getResults().get(0).getGeometry().getLocation().getLng();
-        }else{
-            System.out.println( "could not find lat&lng for address " + address);
+        } else {
+            System.out.println("could not find lat&lng for address " + address);
         }
     }
 
