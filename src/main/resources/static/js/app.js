@@ -136,7 +136,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
-           
+
         };
 
         $scope.showSchoolsC = function () {
@@ -145,7 +145,7 @@ module.exports = {
             layers.schoolsC.addTo(mymap);
             layers.schoolsL.addTo(mymap);
             layers.cmLibraries.removeFrom(mymap);
-           
+
         };
 
         $scope.showCmLibraries = function () {
@@ -154,7 +154,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.addTo(mymap);
-           
+
         };
 
         $scope.showAll = function () {
@@ -163,7 +163,7 @@ module.exports = {
             layers.schoolsC.addTo(mymap);
             layers.schoolsL.addTo(mymap);
             layers.cmLibraries.addTo(mymap);
-           
+
         };
 
         $scope.hideAll = function () {
@@ -172,7 +172,7 @@ module.exports = {
             layers.schoolsC.removeFrom(mymap);
             layers.schoolsL.removeFrom(mymap);
             layers.cmLibraries.removeFrom(mymap);
-           
+
         };
 
 
@@ -181,9 +181,9 @@ module.exports = {
         $scope.searchName = '';
 
         $scope.getName = function () {
-             
+
             charlotteMapService.getName($scope.searchName)
-            
+
         }
 
         //CHARLOTTE MAP
@@ -192,7 +192,7 @@ module.exports = {
         L.tileLayer('https://api.mapbox.com/styles/v1/lclark070607/ciz2xr2gg002r2rqb9g2r41ut/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 13,
-            minZoom: 5,
+            minZoom: 9,
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
         }).addTo(mymap);
@@ -213,8 +213,8 @@ module.exports = {
                 let agency = new L.marker([agencies[i].latitude, agencies[i].longitude], { icon: agencyIcon });
 
                 let popup = L.popup({
-                    minWidth: 250,
-                }).setContent('<h3>' + agencies[i].name + '</h3><br>' + agencies[i].address + '<br>' + agencies[i].phoneNumber);
+                    minWidth: 100,
+                }).setContent('<img src="img/AGENCIES (2).png"></img>' + '<br>' + '<p><a href="' + agencies[i].website + '">' + agencies[i].name + '</a></p>' + '<br>' + agencies[i].address + '<br>' + agencies[i].phoneNumber);
 
                 agency.bindPopup(popup);
                 markers.push(agency);
@@ -241,7 +241,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<h3>' + healthClinics[i].name + '</h3><br>' + healthClinics[i].address + '<br>' + healthClinics[i].contactNumber);
+                }).setContent('<img src="img/AGENCIES (3).png"></img>' + '<p><a href="' + healthClinics[i].website + '">' + healthClinics[i].name + '</a><p>' + '<br>' + healthClinics[i].address + '<br>' + healthClinics[i].contactNumber);
 
                 health.bindPopup(popup);
                 markers2.push(health);
@@ -269,7 +269,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<h3>' + cisSchools[i].name + '</h3><br>' + cisSchools[i].address + '<br>' + cisSchools[i].contactNumber);
+                }).setContent('<img src="img/SCHOOLC.png"></img>' + '<p>' + cisSchools[i].name + '</p><br>' + cisSchools[i].address + '<br>' + cisSchools[i].contactNumber);
 
                 schoolsC.bindPopup(popup);
                 markers3.push(schoolsC);
@@ -298,7 +298,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<h3>' + languageImmersionSchools[i].name + '</h3><br>' + languageImmersionSchools[i].address + '<br>' + languageImmersionSchools[i].phoneNumber);
+                }).setContent('<img src="img/schoolL.png"></img>' + '<p>' + languageImmersionSchools[i].name + '</p><br>' + languageImmersionSchools[i].address + '<br>' + languageImmersionSchools[i].contactNumber);
 
                 schoolsL.bindPopup(popup);
                 markers4.push(schoolsL);
@@ -328,7 +328,7 @@ module.exports = {
                 // console.log(libraries[1].website)
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<h3><a href="' + libraries[i].website + '">' + libraries[i].name + '</a></h3><br>' + '<img src="libraries[i].photo">' + libraries[i].address + '<br>' + libraries[i].contactNumber);
+                }).setContent('<img src="img/library.png"></img>' + '<p><a href="' + libraries[i].website + '">' + libraries[i].name + '</a></p><br>' + libraries[i].address + '<br>' + libraries[i].contactNumber);
 
                 cmLibraries.bindPopup(popup);
                 markers5.push(cmLibraries);
@@ -342,7 +342,7 @@ module.exports = {
         //SEARCH MARKERS
 
         $scope.getName = function () {
-          
+
             charlotteMapService.getName($scope.searchName).then(function (search) {
                 let markers6 = [];
 
@@ -356,16 +356,23 @@ module.exports = {
 
                 for (let i = 0; i < search.length; i++) {
                     let searchMarkers = new L.marker([search[i].latitude, search[i].longitude], { icon: searchIcon });
-                    markers6.push(searchMarkers);
-                }
 
-                layers.searchMarkers = L.layerGroup(markers6);
-                layers.searchMarkers.addTo(mymap);
-                $scope.hideAll();
-                $scope.searchName = "";
-                
-                
-            })
+
+                    let popup = L.popup({
+                        minWidth: 250,
+                    }).setContent('<p>' + search[i].name + '</p><br>' + search[i].address + '<br>' + search[i].phoneNumber);
+
+                    searchMarkers.bindPopup(popup);
+                    markers6.push(searchMarkers);
+                };
+
+                    layers.searchMarkers = L.layerGroup(markers6);
+                    layers.searchMarkers.addTo(mymap);
+                    $scope.hideAll();
+                    $scope.searchName = "";
+
+
+                })
         };
 
     }

@@ -55,6 +55,11 @@ $global-flexbox: true;
 
 // Top Bar
 
+#mapBox {
+    height: 500px;
+    font-family: 'Open Sans', sans-serif;
+}
+
 .top-bar {
     background: #6AB1B8;
     padding: 0px;
@@ -91,19 +96,44 @@ input {
 
 .btn {
     @include grid-column(3);
+    background-color: #6AB1B8; /* Green */
+    border: none;
+    color: white;
+    padding: 2%;
+    text-align: center;
+    text-decoration: none;
+    // display: inline-block;
+    font-size: 16px;
+    // margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #6AB1B8;
+}
+
+.btn:hover {
     background-color: #6AB1B8;
-    border: solid black 2px;
-    
+    color: white;
 }
 
 .row {
     max-width: 100%;
 }
 
+
+
 #mapid {
     height: 500px;
     font-family: 'Open Sans', sans-serif;
 }
+    
+
+
 
 
 
