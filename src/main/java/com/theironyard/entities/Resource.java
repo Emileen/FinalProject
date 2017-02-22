@@ -27,11 +27,16 @@ public class Resource {
     @Column
     String contactNumber;
 
+
+
     @Column (nullable = false)
     String category;
 
     @Column
     String website;
+
+    @Column
+    String email;
 
     @Column
     String photo;
@@ -84,7 +89,15 @@ public class Resource {
         //setLatLongValues();
     }
 
-
+    public Resource(String name, String address, String contactNumber, String category, String website, String email, String photo) {
+        this.name = name;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.category = category;
+        this.website = website;
+        this.email = email;
+        this.photo = photo;
+    }
 
     public int getId() {
         return id;
@@ -171,5 +184,13 @@ public class Resource {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
