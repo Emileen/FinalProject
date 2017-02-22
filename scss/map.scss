@@ -44,9 +44,9 @@ button {
     width: 100%;
 }
 
-.row {
-    max-width: 100%;
-}
+// .row {
+//     max-width: 100%;
+// }
 
 .map-container {
     background-color: #34495e;
@@ -64,7 +64,7 @@ button {
 .align-v-container .column:nth-of-type(1) {
     background: #34495e!important;
     margin: 0 20px;
-    padding: 10px;
+    padding: 20px;
 }
 
 .align-v-container .column:nth-of-type(2) {
@@ -90,11 +90,6 @@ button {
     margin: 0 20px;
     padding: 10px;
 }
-
- .search-row {
-        display: flex;
-        justify-content: space-around;
-    }
 
 input {
     padding: 2%;
