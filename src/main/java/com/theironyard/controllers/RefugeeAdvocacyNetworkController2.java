@@ -34,13 +34,17 @@ public class RefugeeAdvocacyNetworkController2 {
     public void init() throws FileNotFoundException, InterruptedException {
         if (agencies.count() == 0) {
             File f = new File("agency.csv");
-            Scanner fileScanner = new Scanner(f);
-            while (fileScanner.hasNext()) {
+            Scanner fileScanner = new Scanner(f); // scan the file
+            while (fileScanner.hasNext()) { // as long as there is a next line
                 String line = fileScanner.nextLine();
-                String[] columns = line.split(",");
+                String[] columns = line.split(","); // look into the file and separate at the ,
+                //create agency object and store the values in the specific columns
                 Agency oneAgency = new Agency(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5]);
+                //sleep the thread since google api has a max capacity and we are accessing above the max capacity
                 Thread.sleep(250);
+                //setting the lat and lng
                 oneAgency.setLatLongValues();
+                //saving the agency in the repository
                 agencies.save(oneAgency);
             }
         }
@@ -67,7 +71,7 @@ public class RefugeeAdvocacyNetworkController2 {
         return agencies.findAll();
     }
 
-    // provides a list of resources
+    // display a list of resources
     @CrossOrigin
     @RequestMapping(path = "/resources", method = RequestMethod.GET)
     public List<Resource> showResource() {
@@ -83,7 +87,8 @@ public class RefugeeAdvocacyNetworkController2 {
         return agencies.save(postData);// give me the request body and turn it into a agency body
     }
 
-   //based on the button the register picks save the document to the appropriate database
+   //based on the button the register picks save the object - agency or resource to the appropriate database
+    //look at setting a flag so that when the flag is verified then it can be stored into the database
     @CrossOrigin
     @RequestMapping(path = "/registerAll", method = RequestMethod.POST)
     public String registerAgency(String category, String name, String address, String phone, String contactPerson, String email,String website) { //standard submisson will work the other way
@@ -111,7 +116,7 @@ public class RefugeeAdvocacyNetworkController2 {
         // List<Resource> resourceList = (List)resources.findAll();
 
         List<Resource> resourceList;
-
+        //depending on the category that is clicked then send the list of the objects
         if (category.equalsIgnoreCase("health")) {
             resourceList = resources.findByCategoryIgnoreCase(category);
         } else if (category.equalsIgnoreCase("LanguageImmersion")) {
@@ -126,8 +131,9 @@ public class RefugeeAdvocacyNetworkController2 {
         return resourceList;
     }
 
+    //search the database
     //get the name of the agency/ resource from the front end
-    //go into the database and pull out that one agency out and return that to the front end for display
+    //go into the database and pull out that list of names that correspond to the search criteria
     @CrossOrigin
     @RequestMapping ( path = "/search/{name}",  method = RequestMethod.GET)
     //(/search)

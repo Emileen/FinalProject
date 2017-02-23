@@ -23,11 +23,11 @@ public class RefugeeAdvocacyNetworkEventController {
     @RequestMapping(path  = "/login", method = RequestMethod.POST)
     public String login(HttpSession session, String name, String password, String email) throws Exception {
         User user = users.findFirstByName(name);
-        if(user == null){
-            user = new User (name, PasswordStorage.createHash(password), email);
+        if(user == null){ // no user
+            user = new User (name, PasswordStorage.createHash(password), email); // create a user
             users.save(user);
-        }else if (!PasswordStorage.verifyPassword(password,user.getPassword())){
-            throw new Exception("Wrong Password");
+        }else if (!PasswordStorage.verifyPassword(password,user.getPassword())){ // verify the password and if it does not match
+            throw new Exception("Wrong Password"); //throw exception
         }
         session.setAttribute("name", name);
 
@@ -49,6 +49,7 @@ public class RefugeeAdvocacyNetworkEventController {
         return "redirect:/create-event";
     }*/
 
+    // creating a event to place in the calendar
     @CrossOrigin
     @RequestMapping (path ="/create-event", method = RequestMethod.GET)
     public String createEvent(HttpSession session, String description, String data, String startTime, String endTime){
