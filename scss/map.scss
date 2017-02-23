@@ -1,3 +1,4 @@
+//MAP PAGE STYLING
 #mapid {
     height: 500px;
     border: 2px darkgray solid;
@@ -11,7 +12,7 @@
 //AFFECTS BUTTONS ACROSS THE SITE
 .btn {
     @include grid-column(3);
-    background-color: #6AB1B8; /* Green */
+    background-color: #6AB1B8;
     border: none;
     color: white;
     padding: 2%;
@@ -35,7 +36,6 @@
 }
 
 //MAP CONTROLLER
-
 .map-container {
     background-color: #34495e;
     padding: 25px 30px;
@@ -77,5 +77,4 @@
             }
         }
     }
-
 }
