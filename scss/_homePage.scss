@@ -7,14 +7,14 @@
 
 	h1 {
 		color: white;
+		font-family: 'Pathway Gothic One', sans-serif;
 		text-shadow: 2px 4px 2px darkslategray;
 		font-size: 4rem;
-		font-family: 'Pathway Gothic One', sans-serif;
 		line-height: 1em;
-		letter-spacing: -0.025em;
 		font-weight: 700;
 		text-align: center;
-		margin-top: 30px;
+		margin-top: 70px;
+		letter-spacing: -0.025em;
 	}
 
 	p {
@@ -30,25 +30,25 @@
 
 	button {
 		color: white;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 1.5rem;
 		background-color: #6AB1B8;
 		margin-left: 35%;
 		margin-right: 35%;
 		width: 30%;
 		padding: 2%;
-		font-family: 'Open Sans', sans-serif;
-		font-size: 21px;
 		-webkit-transition-duration: 0.4s; /* Safari */
     	transition-duration: 0.4s;
     	cursor: pointer;
 	}
 
 	button {
-    	background-color: #6ab1b8; 
     	color: white; 
+		background-color: #6ab1b8; 
 	}
 
 	button:hover {
-    	background-color: white;
-    	color: #6ab1b8;
+		color: #6ab1b8;
+    	background-color: white;  	
 	}
 }

@@ -29,17 +29,18 @@
 
     <!-- TOP BAR -->
 
-    <section class="top-bar" id="main-menu" data-options="sticky_on: [medium,large]">
+    <section class="top-bar" id="main-menu">
         <div class="top-bar-left">
-            <ul class="dropdown menu" data-dropdown-menu>
+            <ul>
                 <li><a id="nameLogo" href="#">Connecting Communities</a></li>
             </ul>
         </div>
-        <div class="top-bar-right">
-            <ul class="menu vertical medium-horizontal expanded right">
+        <nav class="top-bar-right">
+            <ul class="right row">
+                <li><a ui-sref="charlotte-map">Resource Map</a></li>
                 <li><a ui-sref="join-network">Join the Network</a></li>
             </ul>
-        </div>
+        </nav>
     </section>
 
     <!-- CONTENT VIEWS -->
@@ -52,6 +53,5 @@
     </footer>
 
 </body>
-
 
 </html>

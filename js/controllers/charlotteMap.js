@@ -13,11 +13,6 @@ module.exports = {
             all: null,
         };
 
-        // hiding markers
-        // $scope.hideAgencies = function () {
-        //     layers.agencies.removeFrom(mymap);
-        // };
-
         //SHOWING MARKERS FUNCTIONS
         $scope.showAgencies = function () {
             layers.agencies.addTo(mymap);
@@ -95,6 +90,7 @@ module.exports = {
             accessToken: 'pk.eyJ1IjoibGNsYXJrMDcwNjA3IiwiYSI6ImNpeXV3dDljdjAwNDMzM3FtMmg2eHRsMDUifQ.ECOVir2_PAilBlx3n8RUag'
         }).addTo(mymap);
 
+
         // AGENCIES MARKERS
         charlotteMapService.getAgencies().then(function (agencies) {
             let markers = [];
@@ -112,7 +108,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 100,
-                }).setContent('<img src="img/AGENCIES (2).png"></img>' + '<br>' + '<p><a href="' + agencies[i].website + '">' + agencies[i].name + '</a></p>' + '<br>' + agencies[i].address + '<br>' + '<a href="tel:' + agencies[i].phoneNumber + '">' + agencies[i].phoneNumber + '</a>');
+                }).setContent('<img src="img/AGENCIES (2).png"></img>' + '<br>' + '<h6><a href="' + agencies[i].website + '">' + agencies[i].name + '</a></h6>' + '<br>' + agencies[i].address + '<br>' + '<a href="tel:' + agencies[i].phoneNumber + '">' + agencies[i].phoneNumber + '</a>');
 
                 agency.bindPopup(popup);
                 markers.push(agency);
@@ -139,7 +135,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<img src="img/AGENCIES (3).png"></img>' + '<p><a href="' + healthClinics[i].website + '">' + healthClinics[i].name + '</a><p>' + '<br>' + healthClinics[i].address + '<br>' + '<a href="tel:' + healthClinics[i].contactNumber + '">' + healthClinics[i].contactNumber + '</a>');
+                }).setContent('<img src="img/AGENCIES (3).png"></img>' + '<h6><a href="' + healthClinics[i].website + '">' + healthClinics[i].name + '</a></h6>' + '<br>' + healthClinics[i].address + '<br>' + '<a href="tel:' + healthClinics[i].contactNumber + '">' + healthClinics[i].contactNumber + '</a>');
 
                 health.bindPopup(popup);
                 markers2.push(health);
@@ -167,7 +163,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<img src="img/SCHOOLC.png"></img>' + '<p>' + cisSchools[i].name + '</p><br>' + cisSchools[i].address + '<br>' + '<a href="tel:' + cisSchools[i].contactNumber + '">' + cisSchools[i].contactNumber + '</a>');
+                }).setContent('<img src="img/SCHOOLC.png"></img>' + '<h6>' + cisSchools[i].name + '</h6><br>' + cisSchools[i].address + '<br>' + '<a href="tel:' + cisSchools[i].contactNumber + '">' + cisSchools[i].contactNumber + '</a>');
 
                 schoolsC.bindPopup(popup);
                 markers3.push(schoolsC);
@@ -196,7 +192,7 @@ module.exports = {
 
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<img src="img/schoolL.png"></img>' + '<p>' + languageImmersionSchools[i].name + '</p><br>' + languageImmersionSchools[i].address + '<br>' + '<a href="tel:' + languageImmersionSchools[i].contactNumber + '">' + languageImmersionSchools[i].contactNumber + '</a>');
+                }).setContent('<img src="img/schoolL.png"></img>' + '<h6>' + languageImmersionSchools[i].name + '</h6><br>' + languageImmersionSchools[i].address + '<br>' + '<a href="tel:' + languageImmersionSchools[i].contactNumber + '">' + languageImmersionSchools[i].contactNumber + '</a>');
 
                 schoolsL.bindPopup(popup);
                 markers4.push(schoolsL);
@@ -226,7 +222,7 @@ module.exports = {
                 // console.log(libraries[1].website)
                 let popup = L.popup({
                     minWidth: 250,
-                }).setContent('<img src="img/library.png"></img>' + '<p><a href="' + libraries[i].website + '">' + libraries[i].name + '</a></p><br>' + libraries[i].address + '<br>' + '<a href="tel:' + libraries[i].contactNumber + '">' + libraries[i].contactNumber + '</a>');
+                }).setContent('<img src="img/library.png"></img>' + '<h6><a href="' + libraries[i].website + '">' + libraries[i].name + '</a></h6><br>' + libraries[i].address + '<br>' + '<a href="tel:' + libraries[i].contactNumber + '">' + libraries[i].contactNumber + '</a>');
 
                 cmLibraries.bindPopup(popup);
                 markers5.push(cmLibraries);
@@ -258,19 +254,19 @@ module.exports = {
 
                     let popup = L.popup({
                         minWidth: 250,
-                    }).setContent('<p>' + search[i].name + '</p><br>' + search[i].address + '<br>' + search[i].phoneNumber);
+                    }).setContent('<h6>' + search[i].name + '</h6><br>' + search[i].address + '<br>' + search[i].phoneNumber);
 
                     searchMarkers.bindPopup(popup);
                     markers6.push(searchMarkers);
                 };
 
-                    layers.searchMarkers = L.layerGroup(markers6);
-                    layers.searchMarkers.addTo(mymap);
-                    $scope.hideAll();
-                    $scope.searchName = "";
+                layers.searchMarkers = L.layerGroup(markers6);
+                layers.searchMarkers.addTo(mymap);
+                $scope.hideAll();
+                $scope.searchName = "";
 
 
-                })
+            })
         };
 
     }

@@ -8,6 +8,7 @@ $global-flexbox: true;
 @import 'homePage';
 @import 'map';
 
+//working with Foundation Flex-Grid for the first time
 @include foundation-flex-grid;
 @include foundation-flex-classes;
 @include foundation-typography;
@@ -19,16 +20,19 @@ $global-flexbox: true;
 
 
 // TOP BAR
-
 .top-bar {
     background-color: #6AB1B8;
     padding: 0px;
+
 
     ul {
         list-style-type: none;
         background-color: #6AB1B8;
         margin: 0 10px;
 
+        a {
+            padding: 10px;
+        }
         /* unvisited link */
         a:link {
             color: white;
