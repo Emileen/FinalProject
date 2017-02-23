@@ -16,7 +16,7 @@ h2 {
     text-align: center;
 }
 
-button {
+.btn {
     @include grid-column(3);
     background-color: #6AB1B8; /* Green */
     border: none;
@@ -24,21 +24,25 @@ button {
     padding: 2%;
     text-align: center;
     text-decoration: none;
-    // display: inline-block;
     font-size: 16px;
-    // margin: 4px 2px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
 }
 
-button {
+.btn {
     background-color: white; 
     color: black; 
     border: 2px solid #6AB1B8;
 }
 
-button:hover {
+.btn:hover {
     background-color: #6AB1B8;
     color: white;
+}
+
+#submitbtn {
+    width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
 }

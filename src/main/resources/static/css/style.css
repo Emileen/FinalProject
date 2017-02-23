@@ -499,7 +499,7 @@ form {
 h2 {
   text-align: center; }
 
-button {
+.btn {
   width: 25%;
   float: left;
   padding-right: 0.625rem;
@@ -517,20 +517,25 @@ button {
   transition-duration: 0.4s;
   cursor: pointer; }
   @media print, screen and (min-width: 40em) {
-    button {
+    .btn {
       padding-right: 0.9375rem;
       padding-left: 0.9375rem; } }
-  button:last-child:not(:first-child) {
+  .btn:last-child:not(:first-child) {
     float: right; }
 
-button {
+.btn {
   background-color: white;
   color: black;
   border: 2px solid #6AB1B8; }
 
-button:hover {
+.btn:hover {
   background-color: #6AB1B8;
   color: white; }
+
+#submitbtn {
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%; }
 
 .hero {
   background: url("http://i68.tinypic.com/fjktnd.jpg") no-repeat center center;
@@ -582,6 +587,39 @@ button:hover {
 #map-title {
   color: white;
   text-align: center; }
+
+.btn {
+  width: 25%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  background-color: #6AB1B8;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 2%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer; }
+  @media print, screen and (min-width: 40em) {
+    .btn {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+  .btn:last-child:not(:first-child) {
+    float: right; }
+
+.btn {
+  background-color: white;
+  color: black;
+  border: 2px solid #6AB1B8; }
+
+.btn:hover {
+  background-color: #6AB1B8;
+  color: white; }
 
 .map-container {
   background-color: #34495e;
